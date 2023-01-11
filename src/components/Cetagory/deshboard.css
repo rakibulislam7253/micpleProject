@@ -1,0 +1,16 @@
+
+  
+  .boxstyle {
+    /* display: flex; */
+    margin-top: 30px;
+  
+    display: grid;
+    grid-template-columns: repeat(4, 360px);
+    gap: 10px;
+  }
+  
+ 
+  .design {
+    margin-left: 190px;
+  }
+  
