@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react';
 import test_table from './testTable.module.css';
 
 const Tasttable = () => {
+    let country
+    const [allcountry, setallcountry] = useState([]);
+
+
+
     const [data, setdata] = useState([]);
     const [getCountry, setgetcountry] = useState();
 
@@ -15,7 +20,28 @@ const Tasttable = () => {
     const [selectuser, setselectuser] = useState();
 
     const [singleuserinfo, setsingleuser] = useState([]);
-    console.log(singleuserinfo);
+
+
+    //color state
+
+
+    const [open1, setOpen1] = useState('')
+    const [open11, setOpen11] = useState('')
+
+
+
+
+
+    console.log(allcountry.country)
+    console.log(open1)
+
+    if (open1 == allcountry.country) {
+        console.log('anish kakku ready');
+    }
+
+
+
+
 
 
     useEffect(() => {
@@ -25,15 +51,17 @@ const Tasttable = () => {
             .then((data) => setdata(data))
     }, []);
 
-    const country = [...new Set(data.map(item => item.country))];
+    country = [...new Set(data.map(item => item.country))];
+
     country.sort();
 
     const handleCountry = (e) => {
         let states = data.filter(state => state.country === e);
         states = [...new Set(states.map(item => item.state))]
         states.sort();
-        console.log(states)
+        
         setstat(states)
+
     }
 
 
@@ -41,17 +69,17 @@ const Tasttable = () => {
         let citys = data.filter(city => city.state === e)
         citys = [...new Set(citys.map(item => item.city))]
         citys.sort();
-        console.log(citys)
+        // console.log(citys)
         setcity(citys)
 
     }
     const handlecity = (e) => {
-        let count=0
+        let count = 0
         let userids = data.filter(userid => userid.city === e)
-        count=userids.length;
+        count = userids.length;
         userids = [...new Set(userids.map(item => item.userId))]
         userids.sort();
-        console.log(count)
+        // console.log(count)
         setuser(userids)
 
     }
@@ -60,6 +88,33 @@ const Tasttable = () => {
         let singleuser = data.filter(user => user.userId === e)
         setsingleuser(singleuser);
     }
+
+    const color = (e) => {
+        console.log(e.target.value);
+
+
+    }
+
+
+
+    
+
+    let userCollection = [];
+    data.map((item) => {
+          const userId = item.country;
+          const index = userCollection.findIndex((item) => item.country === userId);
+        //   console.log(index);
+          if (index === -1) {
+              const contendor = { ...item, count: 1 };
+              userCollection.push(contendor);
+            } else {
+              userCollection[index]["count"] += 1;
+            }
+  
+     }, [])
+
+
+
 
 
     return (
@@ -76,18 +131,19 @@ const Tasttable = () => {
                             <th style={{ padding: '10px' }}>Country</th>
                         </tr>
                         {
-                            country.map((items) => {
+                            userCollection.map((contendor) => {
                                 return (
                                     <>
 
                                         <tr>
-                                            <td onClick={(e) => handleCountry(items)}>
-                                                <button className={test_table.btn} ><option key={items} >{items}</option></button>
-                                                {/* <option key={items} ></option> */}
+                                            <td onClick={() => handleCountry(contendor.country)}>
+
+
+                                                <button className={test_table.btn} >
+                                                    {contendor.country} {contendor.userId} <span style={{fontSize:'18px'}} >({contendor.count})</span> 
+                                                </button>
                                             </td>
                                         </tr>
-
-
                                     </>
                                 )
                             })
@@ -105,12 +161,35 @@ const Tasttable = () => {
 
 
                         {
+
+
                             getstat.map(items => {
+
                                 return (
+
                                     <>
                                         <tr>
                                             <td onClick={(e) => handlestate(items)}>
-                                                <button className={test_table.btn}><option key={items}>{items}</option></button>
+                                                <button
+
+                                                    // onClick={() => { setOpen11(true) }}
+                                                    // style={{ backgroundColor: open11 ? "#0048ba" : "white", color: open11 ? "white" : "black" }}
+                                                    className={test_table.btn}>
+
+
+
+                                                    <option key={items}>
+
+                                                        {items}
+
+                                                    </option>
+
+
+
+
+
+
+                                                </button>
                                             </td>
                                         </tr>
                                     </>
@@ -133,17 +212,21 @@ const Tasttable = () => {
                             getcity.map(items => {
                                 return (
                                     <>
-                                        <tr>
-                                            <td onClick={(e) => handlecity(items)}>
-                                            <button className={test_table.btn}><option key={items} > {items} </option></button>
-                        
-                                                </td>
+                                        <tr onClick={(e) => handlecity(items)}>
+                                            <td >
+                                                <button
+                                                    // onClick={color} value='city' className={test_table.btn}
+                                                    className={test_table.btn}>
+                                                    <option key={items} > {items} </option>
+                                                </button>
+
+                                            </td>
                                         </tr>
                                     </>
                                 )
-                            
+
                             })
-                            
+
                         }
                     </table>
                 </div>
@@ -163,7 +246,7 @@ const Tasttable = () => {
                                 return (
                                     <><tr>
                                         <td onClick={(e) => handleUserId(items)} >
-                                         <button className={test_table.btn}>  <option key={items}   > {items} </option></button> 
+                                            <button className={test_table.btn}>  <option key={items}   > {items} </option></button>
                                         </td>
                                     </tr>
                                     </>
@@ -216,25 +299,7 @@ const Tasttable = () => {
 
 
 
-            {/* <select onChange={(e) => handleCountry(e)}>
-                <option>Country</option>
-                {country.map(items => <option key={items} value={getCountry}>{items}</option>)}
-            </select>
-
-            <select onChange={(e) => handlestate(e)}>
-                <option>division</option>
-                {getstat.map(items => <option key={items} value={selectstate}>{items}</option>)}
-            </select>
-
-            <select onChange={(e) => handlecity(e)}>
-                <option>City</option>
-                {getcity.map(items => <option key={items} value={selectcity}> {items} </option>)}
-            </select>
-
-            <select >
-                <option>UserId</option>
-                {getuser.map(items => <option key={items.userId} > {items.userId}{items.name} </option>)}
-            </select> */}
+            
 
 
         </>
