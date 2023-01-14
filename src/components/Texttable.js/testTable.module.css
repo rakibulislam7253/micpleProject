@@ -3,10 +3,14 @@
   border-collapse: collapse;
   width: 100%;
   font-size: 15px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+
 }
 
 .inner {
-  padding: 5px 30px;
+  /* padding: 5px 30px; */
   display: flex;
   flex-direction: row;
 }

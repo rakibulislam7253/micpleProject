@@ -2,10 +2,11 @@ import React from "react";
 import Home from "../Home";
 import Main from "../Layout/Main";
 import Reports from "../Layout/Reports";
-import Trayal from "../Trayal";
+
 
 import Test from "../Test";
 import Tasttable from "../Texttable.js/Tasttable";
+
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -36,11 +37,6 @@ export const router = createBrowserRouter([
 {
   path:'/testtable',
   element:<Tasttable></Tasttable>
-},
-{
-  path:'/trayal',
-  element:<Trayal></Trayal>
 }
-
  
 ]);
