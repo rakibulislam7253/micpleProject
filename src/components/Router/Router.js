@@ -6,6 +6,7 @@ import Reports from "../Layout/Reports";
 
 import Test from "../Test";
 import Tasttable from "../Texttable.js/Tasttable";
+import Trayal from "../Trayal";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -36,7 +37,10 @@ export const router = createBrowserRouter([
 {
   path:'/testtable',
   element:<Tasttable></Tasttable>
+},
+{
+  path:'/trayal',
+  element:<Trayal></Trayal>
 }
-
  
 ]);

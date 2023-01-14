@@ -3,10 +3,11 @@
   border-collapse: collapse;
   width: 100%;
   font-size: 15px;
+
 }
 
 .inner {
-  padding: 5px 30px;
+  /* padding: 5px 30px; */
   display: flex;
   flex-direction: row;
 }
@@ -36,10 +37,3 @@ tr:nth-child(even) {
   background-color: #0048ba;
   color: white;
 }
-
-.background-red {
-
-  background-color: red;
-}
-
-.background-white {background-color: black;}

@@ -6,39 +6,18 @@ const Tasttable = () => {
     const [allcountry, setallcountry] = useState([]);
 
 
-
     const [data, setdata] = useState([]);
-    const [getCountry, setgetcountry] = useState();
 
     const [getstat, setstat] = useState([]);
-    const [selectstate, setselectstate] = useState();
 
     const [getcity, setcity] = useState([]);
-    const [selectcity, setselectcity] = useState();
 
     const [getuser, setuser] = useState([]);
-    const [selectuser, setselectuser] = useState();
 
     const [singleuserinfo, setsingleuser] = useState([]);
 
 
-    //color state
-
-
-    const [open1, setOpen1] = useState('')
-    const [open11, setOpen11] = useState('')
-
-
-
-
-
-    console.log(allcountry.country)
-    console.log(open1)
-
-    if (open1 == allcountry.country) {
-        console.log('anish kakku ready');
-    }
-
+  
 
 
 
@@ -59,7 +38,7 @@ const Tasttable = () => {
         let states = data.filter(state => state.country === e);
         states = [...new Set(states.map(item => item.state))]
         states.sort();
-        
+
         setstat(states)
 
     }
@@ -69,7 +48,7 @@ const Tasttable = () => {
         let citys = data.filter(city => city.state === e)
         citys = [...new Set(citys.map(item => item.city))]
         citys.sort();
-        // console.log(citys)
+      
         setcity(citys)
 
     }
@@ -79,7 +58,7 @@ const Tasttable = () => {
         count = userids.length;
         userids = [...new Set(userids.map(item => item.userId))]
         userids.sort();
-        // console.log(count)
+    
         setuser(userids)
 
     }
@@ -97,21 +76,22 @@ const Tasttable = () => {
 
 
 
-    
+
 
     let userCollection = [];
+
     data.map((item) => {
-          const userId = item.country;
-          const index = userCollection.findIndex((item) => item.country === userId);
+        const userId = item.country;
+        const index = userCollection.findIndex((item) => item.country === userId);
         //   console.log(index);
-          if (index === -1) {
-              const contendor = { ...item, count: 1 };
-              userCollection.push(contendor);
-            } else {
-              userCollection[index]["count"] += 1;
-            }
-  
-     }, [])
+        if (index === -1) {
+            const contendor = { ...item, count: 1 };
+            userCollection.push(contendor);
+        } else {
+            userCollection[index]["count"] += 1;
+        }
+
+    }, [])
 
 
 
@@ -134,13 +114,10 @@ const Tasttable = () => {
                             userCollection.map((contendor) => {
                                 return (
                                     <>
-
                                         <tr>
                                             <td onClick={() => handleCountry(contendor.country)}>
-
-
                                                 <button className={test_table.btn} >
-                                                    {contendor.country} {contendor.userId} <span style={{fontSize:'18px'}} >({contendor.count})</span> 
+                                                    {contendor.country}  <span style={{ fontSize: '18px' }} >({contendor.count})</span>
                                                 </button>
                                             </td>
                                         </tr>
@@ -175,20 +152,7 @@ const Tasttable = () => {
                                                     // onClick={() => { setOpen11(true) }}
                                                     // style={{ backgroundColor: open11 ? "#0048ba" : "white", color: open11 ? "white" : "black" }}
                                                     className={test_table.btn}>
-
-
-
-                                                    <option key={items}>
-
-                                                        {items}
-
-                                                    </option>
-
-
-
-
-
-
+                                                    <option key={items}>{items}</option>
                                                 </button>
                                             </td>
                                         </tr>
@@ -277,14 +241,9 @@ const Tasttable = () => {
                                         <td> {items.userId} </td>
                                         <td> {items.claimer.claim_id} </td>
                                         <td> {items.subject} </td>
-
                                         <td> {items.claimer.post_id} </td>
-
                                         <td> {items.comment} </td>
-
-                                        <td>
-                                            {items.reportrCommrnt}
-                                        </td>
+                                        <td> {items.reportrCommrnt}</td>
 
 
 
@@ -299,7 +258,7 @@ const Tasttable = () => {
 
 
 
-            
+
 
 
         </>
