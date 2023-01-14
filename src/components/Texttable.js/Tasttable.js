@@ -25,21 +25,26 @@ const Tasttable = () => {
     //color state
 
 
-    const [open1, setOpen1] = useState('')
-    const [open11, setOpen11] = useState('')
+    const [selectedButton, setSelectedButton] = useState(null);
+    const [selectedButton1, setSelectedButton1] = useState(null);
+    const [selectedButton2, setSelectedButton2] = useState(null);
+    const [selectedButton3, setSelectedButton3] = useState(null);
 
 
 
+    const handleButtonClick = (id) => {
+        setSelectedButton(id);
+    };
 
-
-    console.log(allcountry.country)
-    console.log(open1)
-
-    if (open1 == allcountry.country) {
-        console.log('anish kakku ready');
-    }
-
-
+    const handleButtonClick1 = (id) => {
+        setSelectedButton1(id);
+    };
+    const handleButtonClick2 = (id) => {
+        setSelectedButton2(id);
+    };
+    const handleButtonClick3 = (id) => {
+        setSelectedButton3(id);
+    };
 
 
 
@@ -59,7 +64,7 @@ const Tasttable = () => {
         let states = data.filter(state => state.country === e);
         states = [...new Set(states.map(item => item.state))]
         states.sort();
-        
+
         setstat(states)
 
     }
@@ -97,21 +102,21 @@ const Tasttable = () => {
 
 
 
-    
+
 
     let userCollection = [];
     data.map((item) => {
-          const userId = item.country;
-          const index = userCollection.findIndex((item) => item.country === userId);
+        const userId = item.country;
+        const index = userCollection.findIndex((item) => item.country === userId);
         //   console.log(index);
-          if (index === -1) {
-              const contendor = { ...item, count: 1 };
-              userCollection.push(contendor);
-            } else {
-              userCollection[index]["count"] += 1;
-            }
-  
-     }, [])
+        if (index === -1) {
+            const contendor = { ...item, count: 1 };
+            userCollection.push(contendor);
+        } else {
+            userCollection[index]["count"] += 1;
+        }
+
+    }, [])
 
 
 
@@ -137,10 +142,13 @@ const Tasttable = () => {
 
                                         <tr>
                                             <td onClick={() => handleCountry(contendor.country)}>
-
-
-                                                <button className={test_table.btn} >
-                                                    {contendor.country} {contendor.userId} <span style={{fontSize:'18px'}} >({contendor.count})</span> 
+                                                <button className={test_table.btn} onClick={() => handleButtonClick(contendor.id)} style={{
+                                                    backgroundColor:
+                                                        selectedButton === contendor.id ? "#0048ba" : "white",
+                                                    color:
+                                                        selectedButton === contendor.id ? "white" : "black"
+                                                }}>
+                                                    {contendor.country}
                                                 </button>
                                             </td>
                                         </tr>
@@ -171,13 +179,12 @@ const Tasttable = () => {
                                         <tr>
                                             <td onClick={(e) => handlestate(items)}>
                                                 <button
-
-                                                    // onClick={() => { setOpen11(true) }}
-                                                    // style={{ backgroundColor: open11 ? "#0048ba" : "white", color: open11 ? "white" : "black" }}
-                                                    className={test_table.btn}>
-
-
-
+                                                    className={test_table.btn}
+                                                    onClick={() => handleButtonClick1(items)} style={{
+                                                        backgroundColor: selectedButton1 === items ? "#0048ba" : "white",
+                                                        color:
+                                                            selectedButton1 === items ? "white" : "black"
+                                                    }}>
                                                     <option key={items}>
 
                                                         {items}
@@ -216,7 +223,13 @@ const Tasttable = () => {
                                             <td >
                                                 <button
                                                     // onClick={color} value='city' className={test_table.btn}
-                                                    className={test_table.btn}>
+                                                    className={test_table.btn}
+                                                    onClick={() => handleButtonClick2(items)} style={{
+                                                        backgroundColor:
+                                                            selectedButton2 === items ? "#0048ba" : "white",
+                                                        color:
+                                                            selectedButton2 === items ? "white" : "black"
+                                                    }}>
                                                     <option key={items} > {items} </option>
                                                 </button>
 
@@ -246,7 +259,16 @@ const Tasttable = () => {
                                 return (
                                     <><tr>
                                         <td onClick={(e) => handleUserId(items)} >
-                                            <button className={test_table.btn}>  <option key={items}   > {items} </option></button>
+                                            <button
+                                                className={test_table.btn}
+                                                onClick={() => handleButtonClick3(items)} style={{
+                                                    backgroundColor:
+                                                        selectedButton3 === items ? "#0048ba" : "white",
+                                                    color:
+                                                        selectedButton3 === items ? "white" : "black"
+                                                }}>
+                                                <option key={items}>{items}</option>
+                                            </button>
                                         </td>
                                     </tr>
                                     </>
@@ -258,37 +280,45 @@ const Tasttable = () => {
 
 
 
-                <div style={{ width: '60%' }}>
+                <div style={{ width: '80%' }}>
                     <table className={test_table.table} >
 
-                        <tr >
+                        <tr>
+                            
                             <th style={{ padding: '10px' }}>Repoter</th>
                             <th style={{ padding: '10px' }}>Claimer</th>
                             <th style={{ padding: '10px' }}>Subject</th>
                             <th style={{ padding: '10px' }}>Post ID</th>
                             <th style={{ padding: '10px' }}> Comment</th>
-                            <th style={{ padding: '10px' }}>Report View</th>
+
+                            
+                            <th  style={{ padding: '10px' }}>Report View</th>
                         </tr>
                         {
                             singleuserinfo.map((items) => {
                                 return (
                                     <><tr>
-
                                         <td> {items.userId} </td>
-                                        <td> {items.claimer.claim_id} </td>
-                                        <td> {items.subject} </td>
+                                        <td > {items.claimer.claim_id} </td>
+                                        <td > {items.subject} </td>
 
-                                        <td> {items.claimer.post_id} </td>
+                                        <td > {items.claimer.post_id} </td>
 
-                                        <td> {items.comment} </td>
+                                        <td > {items.comment} </td>
 
-                                        <td>
+
+
+                                        <td style={{}} >
+                                            {items.reportrCommrnt}
+                                            <hr></hr>
                                             {items.reportrCommrnt}
                                         </td>
 
 
-
                                     </tr>
+
+
+
                                     </>
                                 )
                             })
@@ -299,7 +329,7 @@ const Tasttable = () => {
 
 
 
-            
+
 
 
         </>

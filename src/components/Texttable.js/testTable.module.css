@@ -14,7 +14,7 @@
 td, th {
   border: 1px solid #dddddd;
   text-align: left;
-  padding: 5px;
+  /* padding: 5px; */
   text-align: center;
 }
 
@@ -26,20 +26,9 @@ tr:nth-child(even) {
   border: none;
   width: 100%;
   cursor: pointer;
-  font-size: 14px;
-  padding: 5px 30px;
+  font-size: 15px;
+  padding: 9px 20px;
   background-color: white;
 
 }
 
-.btn:focus {
-  background-color: #0048ba;
-  color: white;
-}
-
-.background-red {
-
-  background-color: red;
-}
-
-.background-white {background-color: black;}
