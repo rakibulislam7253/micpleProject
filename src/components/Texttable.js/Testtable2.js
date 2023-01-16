@@ -33,7 +33,6 @@ const Tasttable = () => {
 
 
     useEffect(() => {
-        // fetch("https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json")
         fetch("maildata1.json")
             .then((response) => response.json())
             .then((data) => setdata(data))
@@ -44,8 +43,6 @@ const Tasttable = () => {
         let country = item.state;
         const selectCountry = country.map((item) => item)
         setstat(selectCountry)
-        // states.sort();
-
     }
 
 
@@ -88,8 +85,6 @@ const Tasttable = () => {
 
     return (<>
         <div className={test_table.inner}>
-
-
             <div style={{ width: '10%' }}>
                 <table className={test_table.table}>
                     <tr> <th style={{ padding: '10px' }}>Country</th> </tr>
@@ -143,7 +138,6 @@ const Tasttable = () => {
 
             <div style={{ width: '10%' }}>
                 <table className={test_table.table}>
-
                     <tr><th style={{ padding: '10px' }}>District</th></tr>
                     {
                         getcity.map(item => {
@@ -191,9 +185,7 @@ const Tasttable = () => {
                 <table className={test_table.table} >
                     <tr>
                         <th style={{ padding: '10px' }}>Repoter</th>
-
                         <th style={{ padding: '10px' }}>Claimer</th>
-
                         <th style={{ padding: '10px' }}>Subject</th>
                         <th style={{ padding: '10px' }}>Post ID</th>
                         <th style={{ padding: '10px' }}> Comment</th>
@@ -233,16 +225,14 @@ const Tasttable = () => {
 
             <div style={{ width: '20%' }}>
                 <table className={test_table.table} >
-
                     <tr>
-                        <th style={{ padding: '10px', backgroundColor: "#e4e4e4" }}>Report View</th>
+                        <th style={{ padding: '10px', backgroundColor: "" }}>Report View</th>
                     </tr>
                     {
                         singleuserinfoClaim.map((item) => {
                             return (
                                 <><tr>
                                     <td style={{ padding: "10px", height: "880px" }}>
-
                                         <div className={test_table.reportpart} >
                                             <h4 style={{ marginTop: '10px' }}><u>Repoter: {item.user_id}</u></h4>
                                             <p style={{ marginTop: '-15px' }} >{item.reportr_Issue}</p>
@@ -255,7 +245,6 @@ const Tasttable = () => {
                                                     <button className={test_table.repltbtn} >Reply</button>
                                                 </div>
                                             </div>
-
                                         </div>
                                         <hr></hr>
 
@@ -269,20 +258,8 @@ const Tasttable = () => {
                                                 <div>
                                                     <button className={test_table.repltbtn} >Reply</button>
                                                 </div>
-
-
-                                            </div>
-
                                         </div>
-
-
-
-
-
-
-
-
-
+                                        </div>
                                     </td>
                                 </tr>
                                 </>)

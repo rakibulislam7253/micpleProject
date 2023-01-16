@@ -39,10 +39,7 @@ export const router = createBrowserRouter([
 {
   path:'/testtable2',
   element:<Testtable2></Testtable2>
-},
-{
-  path:'/testtable3',
-  element:<Testtable3></Testtable3>
 }
+
  
 ]);

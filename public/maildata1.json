@@ -104,6 +104,8 @@
                                         "report_sub": "forget mail",
                                         "repoter_issue": "012341587",
                                         "comment": "extra word use",
+                                        "claim_id": "abc04",
+                                        "claim_name": " haque",
                                         "claim": [
                                             {
                                                 "user_id": "sasf23",
