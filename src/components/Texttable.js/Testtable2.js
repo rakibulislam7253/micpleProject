@@ -216,12 +216,8 @@ const Tasttable = () => {
                                             }}>
 
                                             {item.claim_id}({item.claim_name})
-                                            </button>
+                                        </button>
                                     </td>
-
-
-
-
 
                                     <td > {item.report_sub} </td>
                                     <td > {item.post_id} </td>
@@ -239,18 +235,56 @@ const Tasttable = () => {
                 <table className={test_table.table} >
 
                     <tr>
-                        <th style={{ padding: '10px' }}>Report View</th>
+                        <th style={{ padding: '10px', backgroundColor: "#e4e4e4" }}>Report View</th>
                     </tr>
                     {
                         singleuserinfoClaim.map((item) => {
                             return (
                                 <><tr>
-                                    <td style={{ padding: '10px', height: '200px' }}>
-                                        {/* <h4 style={{ marginTop: '10px' }}><u>Repoter: {item.user_id}</u></h4> */}
-                                        <p style={{ marginTop: '-15px' }} >{item.reportr_Issue}</p>
-                                        <button className={test_table.btn} >Reply</button>
-                                        {/* <h4> <u>Claimer:{item.claimer.claim_id}</u></h4> */}
-                                        <p style={{ marginTop: '-15px' }}>{item.claim_issue}</p> </td></tr>
+                                    <td style={{ padding: "10px", height: "880px" }}>
+
+                                        <div className={test_table.reportpart} >
+                                            <h4 style={{ marginTop: '10px' }}><u>Repoter: {item.user_id}</u></h4>
+                                            <p style={{ marginTop: '-15px' }} >{item.reportr_Issue}</p>
+                                            <div style={{ marginLeft: "15px", display: "flex", marginTop: "300px" }} >
+                                                <div >
+                                                    <input className={test_table.inputbox} ></input>
+                                                </div>
+                                                <div>
+
+                                                    <button className={test_table.repltbtn} >Reply</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <hr></hr>
+
+                                        <div className={test_table.reportpart1} >
+                                            <h4> <u>Claimer:{item.claim_id}</u></h4>
+                                            <p style={{ marginTop: '-15px' }}>{item.claim_issue}</p>
+                                            <div style={{ marginLeft: "15px", display: "flex", marginTop: "300px" }}>
+                                                <div>
+                                                    <input className={test_table.inputbox}></input>
+                                                </div>
+                                                <div>
+                                                    <button className={test_table.repltbtn} >Reply</button>
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+
+
+
+
+
+
+
+
+
+                                    </td>
+                                </tr>
                                 </>)
                         })
                     }

@@ -216,7 +216,9 @@ const Tasttable = () => {
                                     <td style={{ padding: '10px', height: '200px' }}>
                                         <h4 style={{ marginTop: '10px' }}><u>Repoter: {item.user_id}</u></h4>
                                         <p style={{ marginTop: '-15px' }} >{item.reportr_Issue}</p>
+
                                         <button className={test_table.btn} >Reply</button>
+                                        
                                         <h4> <u>Claimer:{item.claim_id}</u></h4>
                                         <p style={{ marginTop: '-15px' }}>{item.claim_issue}</p> </td></tr>
                                 </>)
