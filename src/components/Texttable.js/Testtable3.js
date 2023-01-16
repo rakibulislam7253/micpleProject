@@ -7,8 +7,8 @@ const Tasttable = () => {
     const [data, setdata] = useState([]);
     const [getstat, setstat] = useState([]);
     const [getcity, setcity] = useState([]);
-    const [getuser, setuser] = useState([]);
-    const [singleuserinfo, setsingleuser] = useState([]);
+    const [getuser, setUserId] = useState([]);
+    const [singleuserinfo, setSingleUserInfo] = useState([]);
 
 
 
@@ -19,7 +19,7 @@ const Tasttable = () => {
     const [selectedButton3, setSelectedButton3] = useState(null);
 
 
-    
+
     //color state clickHandel
     const handleButtonClick = (id) => { setSelectedButton(id) };
     const handleButtonClick1 = (id) => { setSelectedButton1(id) };
@@ -31,76 +31,64 @@ const Tasttable = () => {
 
     useEffect(() => {
         // fetch("https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json")
-        fetch("data.json")
+        fetch("maildata.json")
             .then((response) => response.json())
             .then((data) => setdata(data))
     }, []);
 
-    country = [...new Set(data.map(item => item.country))];
-    country.sort();
-    const handleCountry = (e) => {
-        let states = data.filter(state => state.country === e);
-        states = [...new Set(states.map(item => item.state))]
-        states.sort();
-        setstat(states)
-    }
 
-
-    const handlestate = (e) => {
-        let citys = data.filter(city => city.state === e)
-        citys = [...new Set(citys.map(item => item.city))]
-        citys.sort();
-        setcity(citys)
-
-    }
-    const handlecity = (e) => {
-        let count = 0
-        let userids = data.filter(userid => userid.city === e)
-        count = userids.length;
-        userids = [...new Set(userids.map(item => item.userId))]
-        userids.sort();
-        setuser(userids)
+    const handleCountry = (item) => {
+        let country = item.state;
+        const selectCountry = country.map((item) => item)
+        setstat(selectCountry)
+        // states.sort();
 
     }
 
-    const handleUserId = (e) => {
-        let singleuser = data.filter(user => user.userId === e)
-        setsingleuser(singleuser);
+
+    const handlestate = (item) => {
+        let state = item.city;
+        const selectState = state.map((item) => item)
+        setcity(selectState)
     }
 
-    const color = (e) => {
-        console.log(e.target.value);
+
+
+    const handlecity = (item) => {
+        let state = item.user_report
+        const SelectState = state.map((item) => item)
+        setUserId(SelectState)
+
     }
 
-    let userCollection = [];
-    data.map((item) => {
-        const userId = item.country;
-        const index = userCollection.findIndex((item) => item.country === userId);
-        //   console.log(index);
-        if (index === -1) {
-            const contendor = { ...item, count: 1 };
-            userCollection.push(contendor);
-        } else {
-            userCollection[index]["count"] += 1;
-        }
 
-    }, [])
+
+    const handleUserId = (item) => {
+        let state = item.reports
+        const SelectState = state.map((item) => item)
+        setSingleUserInfo(SelectState)       
+    }
+
+   
+
 
 
     return (<>
         <div className={test_table.inner}>
+
+
             <div style={{ width: '10%' }}>
                 <table className={test_table.table}>
                     <tr> <th style={{ padding: '10px' }}>Country</th> </tr>
                     {
-                        userCollection.map((contendor) => {
+                        data.map((item) => {
                             return (
-                                <> <tr> <td onClick={() => handleCountry(contendor.country)}>
-                                    <button className={test_table.btn} onClick={() => handleButtonClick(contendor.id)} style={{
-                                        backgroundColor: selectedButton === contendor.id ? "#0048ba" : "white",
-                                        color: selectedButton === contendor.id ? "white" : "black"
+                                <> <tr> <td onClick={() => handleCountry(item)}>
+                                    <button className={test_table.btn} onClick={() => handleButtonClick(item.id)} style={{
+                                        backgroundColor: selectedButton === item.id ? "#0048ba" : "white",
+                                        color: selectedButton === item.id ? "white" : "black"
                                     }}>
-                                        {contendor.country}
+                                        {item.country_name} ({item.total_Mail_count})
                                     </button></td></tr></>)
                         })
                     }
@@ -108,26 +96,25 @@ const Tasttable = () => {
             </div>
 
 
+
+
+
             <div style={{ width: '10%' }}>
                 <table className={test_table.table} >
                     <tr><th style={{ padding: '10px' }}>Division</th></tr>
                     {
-                        getstat.map(items => {
+                        getstat.map(item => {
                             return (<>
                                 <tr>
-                                    <td onClick={(e) => handlestate(items)}>
+                                    <td onClick={() => handlestate(item)}>
                                         <button
                                             className={test_table.btn}
-                                            onClick={() => handleButtonClick1(items)} style={{
-                                                backgroundColor: selectedButton1 === items ? "#0048ba" : "white",
+                                            onClick={() => handleButtonClick1(item)} style={{
+                                                backgroundColor: selectedButton1 === item ? "#0048ba" : "white",
                                                 color:
-                                                    selectedButton1 === items ? "white" : "black"
+                                                    selectedButton1 === item ? "white" : "black"
                                             }}>
-                                            <option key={items}>
-
-                                                {items}
-
-                                            </option>
+                                            {item.State_name} ({item.state_user_count})
                                         </button>
                                     </td>
                                 </tr>
@@ -146,18 +133,18 @@ const Tasttable = () => {
 
                     <tr><th style={{ padding: '10px' }}>District</th></tr>
                     {
-                        getcity.map(items => {
+                        getcity.map(item => {
                             return (
-                                <> <tr onClick={(e) => handlecity(items)}>
+                                <> <tr onClick={(e) => handlecity(item)}>
                                     <td >
                                         <button className={test_table.btn}
-                                            onClick={() => handleButtonClick2(items)} style={{
+                                            onClick={() => handleButtonClick2(item)} style={{
                                                 backgroundColor:
-                                                    selectedButton2 === items ? "#0048ba" : "white",
+                                                    selectedButton2 === item ? "#0048ba" : "white",
                                                 color:
-                                                    selectedButton2 === items ? "white" : "black"
+                                                    selectedButton2 === item ? "white" : "black"
                                             }}>
-                                            <option key={items} > {items} </option>
+                                            {item.city_name} ({item.city_user_count})
                                         </button>
 
                                     </td>
@@ -174,33 +161,39 @@ const Tasttable = () => {
                 <table className={test_table.table} >
                     <tr><th style={{ padding: '10px' }}>User ID</th></tr>
                     {
-                        getuser.map((items) => {
+                        getuser.map((item) => {
                             return (
-                                <><tr> <td onClick={(e) => handleUserId(items)} ><button className={test_table.btn} onClick={() => handleButtonClick3(items)} style={{ backgroundColor: selectedButton3 === items ? "#0048ba" : "white", color: selectedButton3 === items ? "white" : "black" }}><option key={items}>{items}</option></button></td></tr>
+                                <><tr> <td onClick={(e) => handleUserId(item)} ><button className={test_table.btn} onClick={() => handleButtonClick3(item)} style={{ backgroundColor: selectedButton3 === item ? "#0048ba" : "white", color: selectedButton3 === item ? "white" : "black" }}>
+                                    {item.user_id}</button></td></tr>
                                 </>
                             )
                         })
                     }
                 </table>
             </div>
+
+
+
             <div style={{ width: '60%' }}>
                 <table className={test_table.table} >
                     <tr>
                         <th style={{ padding: '10px' }}>Repoter</th>
+
                         <th style={{ padding: '10px' }}>Claimer</th>
+
                         <th style={{ padding: '10px' }}>Subject</th>
                         <th style={{ padding: '10px' }}>Post ID</th>
                         <th style={{ padding: '10px' }}> Comment</th>
                     </tr>
                     {
-                        singleuserinfo.map((items) => {
+                        singleuserinfo.map((item) => {
                             return (
                                 <><tr>
-                                    <td style={{ padding: '10px' }}> {items.userId} </td>
-                                    <td > {items.claimer.claim_id} </td>
-                                    <td > {items.subject} </td>
-                                    <td > {items.claimer.post_id} </td>
-                                    <td > {items.comment} </td>
+                                    <td style={{ padding: '10px' }}> {item.user_name}({item.user_id})</td>
+                                    <td > {item.claimer.claim_id}({item.claimer.claim_name}) </td>
+                                    <td > {item.report_sub} </td>
+                                    <td > {item.post_id} </td>
+                                    <td > {item.comment} </td>
                                 </tr>
                                 </>
                             )
@@ -217,15 +210,15 @@ const Tasttable = () => {
                         <th style={{ padding: '10px' }}>Report View</th>
                     </tr>
                     {
-                        singleuserinfo.map((items) => {
+                        singleuserinfo.map((item) => {
                             return (
                                 <><tr>
                                     <td style={{ padding: '10px', height: '200px' }}>
-                                        <h4 style={{ marginTop: '10px' }}><u>Repoter: {items.userId}</u></h4>
-                                        <p style={{ marginTop: '-15px' }} >{items.reportrCommrnt}</p>
+                                        <h4 style={{ marginTop: '10px' }}><u>Repoter: {item.user_id}</u></h4>
+                                        <p style={{ marginTop: '-15px' }} >{item.reportr_Issue}</p>
                                         <button className={test_table.btn} >Reply</button>
-                                        <h4> <u>Claimer:{items.claimer.claim_id}</u></h4>
-                                        <p style={{ marginTop: '-15px' }}>{items.claimer.claimCommrnt}</p> </td></tr>
+                                        <h4> <u>Claimer:{item.claim_id}</u></h4>
+                                        <p style={{ marginTop: '-15px' }}>{item.claim_issue}</p> </td></tr>
                                 </>)
                         })
                     }
