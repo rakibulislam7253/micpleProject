@@ -189,6 +189,9 @@ const Tasttable = () => {
                         <th style={{ padding: '10px' }}>Claimer</th>
                         <th style={{ padding: '10px' }}>Post ID</th>
                         <th style={{ padding: '10px' }}> Comment</th>
+                        <th style={{ padding: '10px' }}> Status</th>
+
+
                     </tr>
 
                     {
@@ -215,6 +218,7 @@ const Tasttable = () => {
 
                                     <td > {item.post_id} </td>
                                     <td > {item.comment} </td>
+                                    <td > {item.status} </td>
                                 </tr>
                                 </>
                             )
