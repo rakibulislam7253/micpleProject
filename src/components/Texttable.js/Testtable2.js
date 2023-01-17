@@ -184,34 +184,35 @@ const Tasttable = () => {
             <div style={{ width: '60%' }}>
                 <table className={test_table.table} >
                     <tr>
+                        <th style={{ padding: '10px' }}>Subject</th>
                         <th style={{ padding: '10px' }}>Repoter</th>
                         <th style={{ padding: '10px' }}>Claimer</th>
-                        <th style={{ padding: '10px' }}>Subject</th>
                         <th style={{ padding: '10px' }}>Post ID</th>
                         <th style={{ padding: '10px' }}> Comment</th>
                     </tr>
+
                     {
                         singleuserinfo.map((item) => {
                             return (
                                 <><tr>
-                                    <td style={{ padding: '10px' }}> {item.user_name}({item.user_id})</td>
-
-
-
-
-
                                     <td onClick={(e) => handleclaimId(item)} >
                                         <button className={test_table.btn} onClick={() => handleButtonClick4(item)}
                                             style={{
                                                 backgroundColor: selectedButton4 === item ? "#0048ba" : "white",
                                                 color: selectedButton4 === item ? "white" : "black"
                                             }}>
+                                            {item.report_sub}  </button></td>
 
-                                            {item.claim_id}({item.claim_name})
-                                        </button>
+
+                                    <td style={{ padding: '10px' }}> {item.user_name} ({item.user_id})</td>
+                                    <td  >
+
+
+                                        {item.claim_id} ({item.claim_name})
+
                                     </td>
 
-                                    <td > {item.report_sub} </td>
+
                                     <td > {item.post_id} </td>
                                     <td > {item.comment} </td>
                                 </tr>
@@ -258,7 +259,7 @@ const Tasttable = () => {
                                                 <div>
                                                     <button className={test_table.repltbtn} >Reply</button>
                                                 </div>
-                                        </div>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>

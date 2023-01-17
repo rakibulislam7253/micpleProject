@@ -177,11 +177,10 @@ const Tasttable = () => {
             <div style={{ width: '60%' }}>
                 <table className={test_table.table} >
                     <tr>
+                    <th style={{ padding: '10px' }}>Subject</th>
                         <th style={{ padding: '10px' }}>Repoter</th>
-
                         <th style={{ padding: '10px' }}>Claimer</th>
-
-                        <th style={{ padding: '10px' }}>Subject</th>
+                     
                         <th style={{ padding: '10px' }}>Post ID</th>
                         <th style={{ padding: '10px' }}> Comment</th>
                     </tr>
@@ -189,9 +188,10 @@ const Tasttable = () => {
                         singleuserinfo.map((item) => {
                             return (
                                 <><tr>
+                                     <td > {item.report_sub} </td>
                                     <td style={{ padding: '10px' }}> {item.user_name}({item.user_id})</td>
                                     <td > {item.claimer.claim_id}({item.claimer.claim_name}) </td>
-                                    <td > {item.report_sub} </td>
+                                   
                                     <td > {item.post_id} </td>
                                     <td > {item.comment} </td>
                                 </tr>
