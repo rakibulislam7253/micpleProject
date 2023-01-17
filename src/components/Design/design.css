@@ -11,10 +11,11 @@
     font-weight: 600;
     color: rgb(29, 28, 28);
     margin-top: 30px;
+    
   }
-  p {
+  .number,.itemname {
     margin-top: 12px;
-    text-align: center;
+   
   }
   .name {
     position: relative;

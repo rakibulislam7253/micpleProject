@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import Pdf from './Pdf';
 import test_table from './testTable.module.css';
 
 const Tasttable = () => {
@@ -11,7 +13,7 @@ const Tasttable = () => {
     const [singleuserinfo, setSingleUserInfo] = useState([]);
     const [singleuserinfoClaim, setSingleUserInfoClaim] = useState([]);
 
-
+    <Pdf data={data}></Pdf>
 
     //color state
     const [selectedButton, setSelectedButton] = useState(null);
@@ -228,35 +230,61 @@ const Tasttable = () => {
             </div>
 
 
-            <div style={{ width: '20%' }}>
+            <div style={{ width: '13%' }}>
+
                 <table className={test_table.table} >
-                    <tr>
-                        <th style={{ padding: '10px', backgroundColor: "" }}>Report View</th>
-                    </tr>
+                    <th style={{ padding: '10px', fontSize: "16px" }}> Reviow
+                    </th>
                     {
                         singleuserinfoClaim.map((item) => {
                             return (
                                 <><tr>
-                                    <td style={{ padding: "10px", height: "880px" }}>
+                                    <td style={{ height: "900px" }}>
                                         <div className={test_table.reportpart} >
-                                            <h4 style={{ marginTop: '10px' }}><u>Repoter: {item.user_id}</u></h4>
-                                            <p style={{ marginTop: '-15px' }} >{item.reportr_Issue}</p>
-                                            <div style={{ marginLeft: "15px", display: "flex", marginTop: "300px" }} >
-                                                <div >
+                                            <div style={{ backgroundColor: "#e4e4e4", }}>
+                                                <p
+                                                    style={{
+                                                        width: '100%', padding: "8px",
+                                                        marginTop: "-15PX",
+                                                        fontWeight: "bold",
+                                                        fontSize: "15px"
+                                                    }}>
+                                                    {item.user_name}<span style={{ fontSize: "11px" }}> (Repoter) </span>
+                                                </p>
+
+                                            </div>
+
+                                            <p style={{ fontSize: "13px" }} >{item.reportr_Issue}</p>
+                                            {/* <hr></hr> */}
+                                            <div style={{ marginLeft: "15px", display: "flex", marginTop: "250px" }} >
+                                                <div style={{ paddingTop: "8px" }}>
                                                     <input className={test_table.inputbox} ></input>
                                                 </div>
                                                 <div>
-
-                                                    <button className={test_table.repltbtn} >Reply</button>
+                                                    <button className={test_table.repltbtn} > <img src='https://cdn-icons-png.flaticon.com/512/4712/4712663.png' /> </button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr></hr>
+
 
                                         <div className={test_table.reportpart1} >
-                                            <h4> <u>Claimer:{item.claim_id}</u></h4>
-                                            <p style={{ marginTop: '-15px' }}>{item.claim_issue}</p>
-                                            <div style={{ marginLeft: "15px", display: "flex", marginTop: "300px" }}>
+
+                                            <div style={{ backgroundColor: "#e4e4e4" }}>
+                                                <p
+                                                    style={{
+                                                        width: '100%', padding: "8px",
+                                                        marginTop: "15PX",
+                                                        fontWeight: "bold",
+                                                        fontSize: "15px",
+
+                                                    }}>
+
+                                                    {item.claim_name}<span style={{ fontSize: "11px" }}> (Claimer)</span>
+                                                </p>
+                                            </div>
+                                            <p style={{ fontSize: "13px" }} >{item.claim_issue}</p>
+                                            {/* <hr></hr> */}
+                                            <div style={{ marginLeft: "25px", display: "flex", marginTop: "360px" }}>
                                                 <div>
                                                     <input className={test_table.inputbox}></input>
                                                 </div>
@@ -265,10 +293,15 @@ const Tasttable = () => {
                                                 </div>
                                             </div>
                                         </div>
+                                        {/* <Link to={'/pdf'}><button style={{ backgroundColor: "yellow" }}><Pdf item={item} ></Pdf> PDF</button></Link> */}
+
                                     </td>
+
                                 </tr>
+
                                 </>)
                         })
+
                     }
                 </table>
             </div>
