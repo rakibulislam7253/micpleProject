@@ -5,9 +5,9 @@ import Reports from "../Layout/Reports";
 
 
 import Test from "../Test";
+import AllTesttable from "../Texttable.js/AllTesttable";
 import Pdf from "../Texttable.js/Pdf";
-import Testtable2 from "../Texttable.js/Testtable2";
-import Testtable3 from "../Texttable.js/Testtable3";
+
 
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -34,17 +34,21 @@ export const router = createBrowserRouter([
   {
     path: "/country",
     element: <Reports></Reports>,
-   
+
   },
 
-{
-  path:'/testtable2',
-  element:<Testtable2></Testtable2>
-},
-{
-  path:'/pdf',
-  element:<Pdf></Pdf>
-}
 
+
+
+  {
+    path: '/alltesttable',
+    element: <AllTesttable></AllTesttable>
+  },
  
+  {
+    path: '/pdf',
+    element: <Pdf></Pdf>
+  }
+
+
 ]);

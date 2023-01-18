@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FiSend } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import Pdf from './Pdf';
 import test_table from './testTable.module.css';
@@ -216,8 +217,6 @@ const Tasttable = () => {
                                         {item.claim_id} ({item.claim_name})
 
                                     </td>
-
-
                                     <td > {item.post_id} </td>
                                     <td > {item.comment} </td>
                                     <td > {item.status} </td>
@@ -233,13 +232,15 @@ const Tasttable = () => {
             <div style={{ width: '13%' }}>
 
                 <table className={test_table.table} >
-                    <th style={{ padding: '10px', fontSize: "16px" }}> Reviow
+                    <th style={{ padding: '10px', fontSize: "16px" }}> Review
                     </th>
                     {
                         singleuserinfoClaim.map((item) => {
                             return (
                                 <><tr>
-                                    <td style={{ height: "900px" }}>
+                                    <td>
+
+                                        {/* repoter */}
                                         <div className={test_table.reportpart} >
                                             <div style={{ backgroundColor: "#e4e4e4", }}>
                                                 <p
@@ -254,19 +255,38 @@ const Tasttable = () => {
 
                                             </div>
 
-                                            <p style={{ fontSize: "13px" }} >{item.reportr_Issue}</p>
-                                            {/* <hr></hr> */}
-                                            <div style={{ marginLeft: "15px", display: "flex", marginTop: "250px" }} >
-                                                <div style={{ paddingTop: "8px" }}>
-                                                    <input className={test_table.inputbox} ></input>
+                                            <div>
+                                                <p style={{ fontSize: "13px" }} >{item.reportr_Issue}</p>
+                                                <p style={{ fontSize: '9px', color: 'gray', marginRight: '5px', marginTop: "-7px" }}>05/01/2022, 18:11</p>
+                                            </div>
+
+                                            <div style={{ height: "300px" }} >
+                                                <div style={{ textAlign: 'start', width: '80%' }}>
+                                                    <p style={{ backgroundColor: 'lightgray', fontSize: '12px', borderRadius: '10px 10px 10px 0px', padding: '5px', margin: '5px 5px 2px 5px' }}>srgsdfctgsgsvsghcsx</p>
+                                                    <p style={{ fontSize: '9px', color: 'gray', marginLeft: '5px' }}>05/01/2022, 17:31</p>
                                                 </div>
-                                                <div>
-                                                    <button className={test_table.repltbtn} > <img src='https://cdn-icons-png.flaticon.com/512/4712/4712663.png' /> </button>
+
+                                                <div style={{ width: '80%', marginLeft: 'auto', textAlign: 'end' }}>
+                                                    <p style={{ backgroundColor: 'gray', fontSize: '12px', borderRadius: '10px 10px 0px 10px', padding: '5px', margin: '5px 5px 2px 5px', color: 'white' }}>sdgfcseghsrdtgnbdbjv</p>
+                                                    <p style={{ fontSize: '9px', color: 'gray', marginRight: '5px' }}>05/01/2022, 18:11</p>
+                                                </div>
+                                            </div>
+
+                                            <div style={{ marginLeft: "15px", display: "flex" }} >
+                                                <div style={{ paddingTop: "8px" }}>
+                                                    <input className={test_table.inputbox} placeholder="send messege"></input>
+                                                </div>
+                                                <div  >
+                                                    <FiSend className={test_table.repltbtn} style={{
+                                                        width: '25px',
+                                                        height: '25px',
+
+                                                    }} />
                                                 </div>
                                             </div>
                                         </div>
 
-
+                                        {/* claimer */}
                                         <div className={test_table.reportpart1} >
 
                                             <div style={{ backgroundColor: "#e4e4e4" }}>
@@ -282,22 +302,45 @@ const Tasttable = () => {
                                                     {item.claim_name}<span style={{ fontSize: "11px" }}> (Claimer)</span>
                                                 </p>
                                             </div>
+                                            <div>
+                                            <p style={{ fontSize: '9px', color: 'gray', marginRight: '-200px',marginBottom:'-10px'}}>05/01/2022, 18:11</p>
                                             <p style={{ fontSize: "13px" }} >{item.claim_issue}</p>
-                                            {/* <hr></hr> */}
-                                            <div style={{ marginLeft: "25px", display: "flex", marginTop: "360px" }}>
+                                            </div>
+
+                                            <div style={{ height: "300px" }}>
+                                                <div style={{ textAlign: 'start', width: '80%' }}>
+                                                    <p style={{ backgroundColor: 'lightgray', fontSize: '12px', borderRadius: '10px 10px 10px 0px', padding: '5px', margin: '5px 5px 2px 5px' }}>srgsdfctgsgsvsghcsx</p>
+                                                    <p style={{ fontSize: '9px', color: 'gray', marginLeft: '5px' }}>05/01/2022, 17:31</p>
+                                                </div>
+
+                                                <div style={{ width: '80%', marginLeft: 'auto', textAlign: 'end' }}>
+                                                    <p style={{ backgroundColor: 'gray', fontSize: '12px', borderRadius: '10px 10px 0px 10px', padding: '5px', margin: '5px 5px 2px 5px', color: 'white' }}>sdgfcseghsrdtgnbdbjv</p>
+                                                    <p style={{ fontSize: '9px', color: 'gray', marginRight: '5px' }}>05/01/2022, 18:11</p>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div style={{ marginLeft: "25px", display: "flex", marginTop: "10px" }}>
                                                 <div>
-                                                    <input className={test_table.inputbox}></input>
+                                                    <input className={test_table.inputbox} placeholder="send messege"></input>
                                                 </div>
                                                 <div>
-                                                    <button className={test_table.repltbtn} >Reply</button>
+                                                    <FiSend className={test_table.repltbtn} style={{
+                                                        width: '25px',
+                                                        height: '25px',
+
+                                                    }} />
                                                 </div>
                                             </div>
                                         </div>
-                                        {/* <Link to={'/pdf'}><button style={{ backgroundColor: "yellow" }}><Pdf item={item} ></Pdf> PDF</button></Link> */}
+
 
                                     </td>
 
+
                                 </tr>
+                                    <Link state={item} to={'/pdf'}> Download PDF </Link>
 
                                 </>)
                         })
