@@ -7,6 +7,7 @@ import Reports from "../Layout/Reports";
 import Test from "../Test";
 import AllTesttable from "../Texttable.js/AllTesttable";
 import Pdf from "../Texttable.js/Pdf";
+import SolveReport from "../Texttable.js/SolveReport";
 
 
 
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
   {
     path: '/pdf',
     element: <Pdf></Pdf>
+  },
+  {
+    path: '/solve',
+    element: <SolveReport></SolveReport>
   }
 
 

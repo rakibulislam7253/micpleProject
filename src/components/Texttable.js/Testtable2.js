@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FiSend } from 'react-icons/fi';
+import { BiDownload } from 'react-icons/bi';
+
 import { Link } from 'react-router-dom';
 import Pdf from './Pdf';
 import test_table from './testTable.module.css';
@@ -192,7 +194,7 @@ const Tasttable = () => {
                         <th style={{ padding: '10px' }}>Claimer</th>
                         <th style={{ padding: '10px' }}>Post ID</th>
                         <th style={{ padding: '10px' }}> Comment</th>
-                        <th style={{ padding: '10px' }}> Status</th>
+                        <th style={{ padding: '5px 18px' }}> Status</th>
 
 
                     </tr>
@@ -207,7 +209,8 @@ const Tasttable = () => {
                                                 backgroundColor: selectedButton4 === item ? "#0048ba" : "white",
                                                 color: selectedButton4 === item ? "white" : "black"
                                             }}>
-                                            {item.report_sub}  </button></td>
+                                            {item.report_sub}  </button>
+                                    </td>
 
 
                                     <td style={{ padding: '10px' }}> {item.user_name} ({item.user_id})</td>
@@ -232,8 +235,21 @@ const Tasttable = () => {
             <div style={{ width: '13%' }}>
 
                 <table className={test_table.table} >
-                    <th style={{ padding: '10px', fontSize: "16px" }}> Review
+
+                    <th style={{ fontSize: "16px", height: "35px", width: '98%', display: 'flex' }}><p style={{ marginLeft: "90px", marginTop: "8px" }}>Review</p>
+                        <div style={{ marginLeft: '80px', marginTop: "5px" }}>
+
+
+
+                            <BiDownload style={{ width: "20px", height: "25px" }} />
+
+
+                        </div>
                     </th>
+
+
+
+
                     {
                         singleuserinfoClaim.map((item) => {
                             return (
@@ -274,7 +290,7 @@ const Tasttable = () => {
 
                                             <div style={{ marginLeft: "15px", display: "flex" }} >
                                                 <div style={{ paddingTop: "8px" }}>
-                                                    <input className={test_table.inputbox} placeholder="send messege"></input>
+                                                    <input className={test_table.inputbox} placeholder="Send messege"></input>
                                                 </div>
                                                 <div  >
                                                     <FiSend className={test_table.repltbtn} style={{
@@ -303,8 +319,8 @@ const Tasttable = () => {
                                                 </p>
                                             </div>
                                             <div>
-                                            <p style={{ fontSize: '9px', color: 'gray', marginRight: '-200px',marginBottom:'-10px'}}>05/01/2022, 18:11</p>
-                                            <p style={{ fontSize: "13px" }} >{item.claim_issue}</p>
+                                                <p style={{ fontSize: '9px', color: 'gray', marginRight: '-200px', marginBottom: '-10px' }}>05/01/2022, 18:11</p>
+                                                <p style={{ fontSize: "13px" }} >{item.claim_issue}</p>
                                             </div>
 
                                             <div style={{ height: "300px" }}>
@@ -323,7 +339,7 @@ const Tasttable = () => {
 
                                             <div style={{ marginLeft: "25px", display: "flex", marginTop: "10px" }}>
                                                 <div>
-                                                    <input className={test_table.inputbox} placeholder="send messege"></input>
+                                                    <input className={test_table.inputbox} placeholder="Send messege"></input>
                                                 </div>
                                                 <div>
                                                     <FiSend className={test_table.repltbtn} style={{
@@ -340,13 +356,27 @@ const Tasttable = () => {
 
 
                                 </tr>
-                                    <Link state={item} to={'/pdf'}> Download PDF </Link>
 
+                                    <div style={{ marginTop: "15px", marginBottom: "15px", display: 'flex', justifyContent: "space-between" }} >
+                                        <div>
+
+                                            <Link state={item} to={'/pdf'} className={test_table.pdfbtn}> Download PDF </Link>
+                                        </div>
+                                        <div>
+
+                                            <Link state={item} to={''} className={test_table.pdfbtn}> Solve  </Link>
+                                        </div>
+                                        <div>
+
+                                            <Link state={item} to={''} className={test_table.pdfbtn}> Process </Link>
+                                        </div>
+                                    </div>
                                 </>)
                         })
 
                     }
                 </table>
+
             </div>
         </div>
 

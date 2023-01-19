@@ -10,8 +10,8 @@
 }
 
 .inner {
-  padding: 5px 10px;
-  margin-right: 20px;
+  /* padding: 5px 10px; */
+  margin-right: 60px;
   display: flex;
   flex-direction: row;
 }
@@ -73,7 +73,6 @@ tr:nth-child(even) {
 img {
   width:30px;
   height: 30px;
-
 }
 
 .reportpartpdf{
@@ -82,4 +81,18 @@ img {
 
 .reportpart{
   margin-top: 10px;
+}
+.pdfbtn
+{
+  text-decoration: none;
+  border: 2px solid rgb(169, 169, 169);
+  border-radius: 5px;
+  padding: 3px 8px;
+  font-weight: bold;
+  color: black;
+}
+.pdfbtn:hover
+{
+  color:white;
+  background-color: blue;
 }

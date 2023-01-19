@@ -29,6 +29,9 @@
                                         "status":"panding",
                                         "claim": [
                                             {
+                                                "country_name": "Australia",
+                                                "State_name": "Victoria",
+                                                "city_name": "sunbury",
                                                 "user_id": "saddam01",
                                                 "user_name": "saddam Khan",
                                                 "claim_name": "anusur",
