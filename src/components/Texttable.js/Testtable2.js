@@ -14,7 +14,7 @@ const Tasttable = () => {
     const [getcity, setcity] = useState([]);
     const [getuser, setUserId] = useState([]);
     const [singleuserinfo, setSingleUserInfo] = useState([]);
-    const [singleuserinfoClaim, setSingleUserInfoClaim] = useState([]);
+    const [singleuserinfoClaim, setSingleUserInfoClaim] = useState(false);
 
     <Pdf data={data}></Pdf>
 
@@ -79,9 +79,10 @@ const Tasttable = () => {
         let state = item.claim
         const SelectState = state.map((item) => item)
         setSingleUserInfoClaim(SelectState)
+
     }
 
-
+    console.log(singleuserinfoClaim);
 
 
 
@@ -239,19 +240,19 @@ const Tasttable = () => {
                     <th style={{ fontSize: "16px", height: "35px", width: '98%', display: 'flex' }}><p style={{ marginLeft: "90px", marginTop: "8px" }}>Review</p>
                         <div style={{ marginLeft: '80px', marginTop: "5px" }}>
 
+                            {/* {
+                                singleuserinfoClaim && 
+                               <BiDownload style={{ width: "20px", height: "25px" }} /> 
+                            } */}
 
-
-                            <BiDownload style={{ width: "20px", height: "25px" }} />
 
 
                         </div>
                     </th>
 
 
-
-
                     {
-                        singleuserinfoClaim.map((item) => {
+                        singleuserinfoClaim && singleuserinfoClaim.map((item) => {
                             return (
                                 <><tr>
                                     <td>
@@ -356,12 +357,12 @@ const Tasttable = () => {
 
 
                                 </tr>
+                                    <div className={test_table.position}  >
 
+                                        <Link state={item} to={'/pdf'} > <BiDownload style={{ width: "25px", height: "30px",color:"gray" }} />  </Link>
+                                    </div>
                                     <div style={{ marginTop: "15px", marginBottom: "15px", display: 'flex', justifyContent: "space-between" }} >
-                                        <div>
 
-                                            <Link state={item} to={'/pdf'} className={test_table.pdfbtn}> Download PDF </Link>
-                                        </div>
                                         <div>
 
                                             <Link state={item} to={''} className={test_table.pdfbtn}> Solve  </Link>
@@ -375,6 +376,7 @@ const Tasttable = () => {
                         })
 
                     }
+
                 </table>
 
             </div>
