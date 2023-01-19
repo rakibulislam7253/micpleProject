@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Testtable2 from '../Texttable.js/Testtable2'
 import Process from './Process';
 import SolveReport from './SolveReport';
-import './notice.css'
+import './alltest.css'
 const AllTesttable = () => {
 
 
@@ -17,11 +17,16 @@ const AllTesttable = () => {
 
             <div className='data_body'>
                 <div className='mails_tab'>
-                    <div className="tabs">
+                    <nev className="tabs">
+                       
                         <button className={`tab ${checkActive(1, "active")}`} onClick={() => handleClick(1)} >All Reports  </button>
-                        <button className={`tab ${checkActive(2, "active")}`} onClick={() => handleClick(2)} > Processing Reports </button>
-                        <button className={`tab ${checkActive(3, "active")}`} onClick={() => handleClick(3)} > Solve Reports </button>
-                    </div>
+                        <button className={`tab ${checkActive(2, "active")}`} onClick={() => handleClick(2)} > Solve Reports</button>
+                        <button className={`tab ${checkActive(3, "active")}`} onClick={() => handleClick(3)} > Processing Reports  </button>
+
+                        <p style={{marginLeft:"1020px"}}>Rakib</p>
+                    
+                    </nev>
+                    
                 </div>
 
 

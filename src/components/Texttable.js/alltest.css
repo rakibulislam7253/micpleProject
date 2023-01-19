@@ -2,6 +2,7 @@
 .mails_tab .tabs {  
   display: flex;  
   padding: 10px;
+  
 }
 .mails_tab .tab {  
   background: white;
@@ -9,17 +10,20 @@
   margin: 5px 29px; 
   padding: .7em 2em;  
   border: none;
+
 }
 
 .mails_tab button {
   font-size: 15px;
   cursor: pointer;
+  
 }
 
 .mails_tab .tab.active {
   background: #0048ba;
   font-weight: bold;
   color: white;
+  
 }
 .panel {
   display: none;
@@ -27,6 +31,14 @@
 }
 .panel.active {
   display: block;
+}
+
+
+.mails_tab{
+position: sticky;  
+top: 0px;
+/* background-color: rgb(243, 240, 240); */
+background-color: rgb(149, 157, 165,0.2);
 }
 
 

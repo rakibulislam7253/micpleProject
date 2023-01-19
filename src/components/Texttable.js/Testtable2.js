@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { FiSend } from 'react-icons/fi';
+import { BiSend } from 'react-icons/bi';
 import { BiDownload } from 'react-icons/bi';
-
+import { ImDownload } from 'react-icons/im';
 import { Link } from 'react-router-dom';
-import Pdf from './Pdf';
 import test_table from './testTable.module.css';
+import { BiReset } from "react-icons/bi";
+import { MdOutlineCancel } from "react-icons/md";
 
 const Tasttable = () => {
     let country
@@ -16,7 +17,44 @@ const Tasttable = () => {
     const [singleuserinfo, setSingleUserInfo] = useState([]);
     const [singleuserinfoClaim, setSingleUserInfoClaim] = useState(false);
 
-    <Pdf data={data}></Pdf>
+
+    // spinner reset
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [timeElapsed, setTimeElapsed] = useState(0);
+    const [progress, setProgress] = useState(false);
+
+    let intervalId;
+
+    const startLoading = () => {
+        setIsLoading(true);
+        setProgress(0);
+        intervalId = setInterval(() => {
+            setProgress((prevProgress) => {
+                if (prevProgress === 100) {
+                    clearInterval(intervalId);
+                    setIsLoading(false);
+                    setstat([]);
+                    setcity([]);
+                    setUserId([]);
+                    setSingleUserInfo([]);
+                    setSingleUserInfoClaim([]);
+                    return 0;
+                }
+                return prevProgress + 10;
+            });
+        }, 1000);
+    };
+
+    const cancelLoading = () => {
+        clearInterval(intervalId);
+        setIsLoading(false);
+        setProgress(true);
+    };
+
+
+
+
 
     //color state
     const [selectedButton, setSelectedButton] = useState(null);
@@ -33,8 +71,6 @@ const Tasttable = () => {
     const handleButtonClick2 = (id) => { setSelectedButton2(id) };
     const handleButtonClick3 = (id) => { setSelectedButton3(id) };
     const handleButtonClick4 = (id) => { setSelectedButton4(id) };
-
-
 
 
     useEffect(() => {
@@ -90,20 +126,74 @@ const Tasttable = () => {
 
 
     return (<>
+      
         <div className={test_table.inner}>
             <div style={{ width: '10%' }}>
+                
                 <table className={test_table.table}>
-                    <tr> <th style={{ padding: '10px' }}>Country</th> </tr>
+                    <tr>
+                        <th style={{ padding: '10px' }}>
+                            <div style={{ display: "flex", justifyContent: "space-between", marginTop: "-15px", marginBottom: "-22px" }}>
+
+                                <p>Country</p>
+                                {/* reset button */}
+                                <p className={test_table.tooltip1}>
+                                    <span className={test_table.tooltiptext1}>Reset Data</span>
+                                    {isLoading ? (
+                                        <div className={test_table.loaderContainer}>
+                                            <svg viewBox="0 0 36 36">
+                                                <path
+                                                    className={test_table.progressBg}
+                                                    d="M 18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"
+                                                />
+                                                <path
+                                                    className={test_table.progressBar}
+                                                    strokeDasharray={`${progress}, 100`}
+                                                    d="M 18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"
+                                                />
+                                            </svg>
+
+                                            <MdOutlineCancel
+                                                onClick={cancelLoading}
+                                                color="#0048ba"
+                                                className={test_table.cancelButton}
+                                            />
+                                        </div>
+                                    ) : (
+                                        <div
+                                            style={{
+                                                display: "flex",
+                                            }}
+                                        >
+                                            <BiReset
+                                                onClick={startLoading}
+                                                className={test_table.restButtonStyle}
+                                            />
+                                        </div>
+                                    )}
+                                </p>
+                            </div>
+
+                        </th>
+                    </tr>
+                    {/* country map */}
                     {
                         data.map((item) => {
                             return (
-                                <> <tr> <td onClick={() => handleCountry(item)}>
-                                    <button className={test_table.btn} onClick={() => handleButtonClick(item.id)} style={{
-                                        backgroundColor: selectedButton === item.id ? "#0048ba" : "white",
-                                        color: selectedButton === item.id ? "white" : "black"
-                                    }}>
-                                        {item.country_name} ({item.total_Mail_count})
-                                    </button></td></tr></>)
+                                <> <tr>
+
+                                    <td onClick={() => handleCountry(item)}>
+                                        <button className={test_table.btn} onClick={() => handleButtonClick(item.id)} style={{
+                                            backgroundColor: selectedButton === item.id ? "#0048ba" : "white",
+                                            color: selectedButton === item.id ? "white" : "black"
+                                        }}>
+                                            {item.country_name} ({item.total_Mail_count})
+                                        </button>
+                                    </td></tr></>)
                         })
                     }
                 </table>
@@ -112,7 +202,7 @@ const Tasttable = () => {
 
 
 
-
+            {/* division map */}
             <div style={{ width: '10%' }}>
                 <table className={test_table.table} >
                     <tr><th style={{ padding: '10px' }}>Division</th></tr>
@@ -141,7 +231,7 @@ const Tasttable = () => {
 
 
 
-
+            {/* distric map */}
             <div style={{ width: '10%' }}>
                 <table className={test_table.table}>
                     <tr><th style={{ padding: '10px' }}>District</th></tr>
@@ -170,6 +260,8 @@ const Tasttable = () => {
                     }
                 </table>
             </div>
+
+            {/* userId map */}
             <div style={{ width: '10%' }}>
                 <table className={test_table.table} >
                     <tr><th style={{ padding: '10px' }}>User ID</th></tr>
@@ -186,7 +278,7 @@ const Tasttable = () => {
             </div>
 
 
-
+            {/* rest of part */}
             <div style={{ width: '60%' }}>
                 <table className={test_table.table} >
                     <tr>
@@ -272,7 +364,7 @@ const Tasttable = () => {
 
                                             </div>
 
-                                            <div>
+                                            <div style={{ width: "320px", height: "90px" }}>
                                                 <p style={{ fontSize: "13px" }} >{item.reportr_Issue}</p>
                                                 <p style={{ fontSize: '9px', color: 'gray', marginRight: '5px', marginTop: "-7px" }}>05/01/2022, 18:11</p>
                                             </div>
@@ -294,7 +386,7 @@ const Tasttable = () => {
                                                     <input className={test_table.inputbox} placeholder="Send messege"></input>
                                                 </div>
                                                 <div  >
-                                                    <FiSend className={test_table.repltbtn} style={{
+                                                    <BiSend className={test_table.repltbtn} style={{
                                                         width: '25px',
                                                         height: '25px',
 
@@ -319,7 +411,7 @@ const Tasttable = () => {
                                                     {item.claim_name}<span style={{ fontSize: "11px" }}> (Claimer)</span>
                                                 </p>
                                             </div>
-                                            <div>
+                                            <div style={{ width: "320px", height: "90px" }}>
                                                 <p style={{ fontSize: '9px', color: 'gray', marginRight: '-200px', marginBottom: '-10px' }}>05/01/2022, 18:11</p>
                                                 <p style={{ fontSize: "13px" }} >{item.claim_issue}</p>
                                             </div>
@@ -343,7 +435,8 @@ const Tasttable = () => {
                                                     <input className={test_table.inputbox} placeholder="Send messege"></input>
                                                 </div>
                                                 <div>
-                                                    <FiSend className={test_table.repltbtn} style={{
+                                                    <BiSend style={{
+                                                        padding: "4px 10px",
                                                         width: '25px',
                                                         height: '25px',
 
@@ -357,19 +450,27 @@ const Tasttable = () => {
 
 
                                 </tr>
+
+
                                     <div className={test_table.position}  >
 
-                                        <Link state={item} to={'/pdf'} > <BiDownload style={{ width: "25px", height: "30px",color:"gray" }} />  </Link>
+                                        <Link state={item} to={'/pdf'} className={test_table.tooltip} >
+
+                                            <ImDownload style={{ width: "22px", height: "30px", color: "gray" }}></ImDownload>
+                                            <span className={test_table.tooltiptext}>Download PDF</span>
+
+                                        </Link>
                                     </div>
-                                    <div style={{ marginTop: "15px", marginBottom: "15px", display: 'flex', justifyContent: "space-between" }} >
 
-                                        <div>
+                                    <div style={{ marginTop: "15px", marginBottom: "15px", display: 'flex', justifyContent: "flex-end", marginRight: "5px" }} >
 
-                                            <Link state={item} to={''} className={test_table.pdfbtn}> Solve  </Link>
-                                        </div>
-                                        <div>
+                                        <div  >
 
                                             <Link state={item} to={''} className={test_table.pdfbtn}> Process </Link>
+                                        </div>
+                                        <div style={{ marginLeft: "15px" }} >
+
+                                            <Link state={item} to={''} className={test_table.pdfbtn}> Solve  </Link>
                                         </div>
                                     </div>
                                 </>)

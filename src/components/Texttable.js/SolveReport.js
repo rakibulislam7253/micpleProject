@@ -7,7 +7,7 @@ const SolveReport = () => {
     console.log(item);
     return (
         <div>
-           <h1>hi i am solve</h1> 
+           <h1> solve Report</h1> 
         </div>
     );
 };
