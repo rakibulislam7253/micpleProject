@@ -203,8 +203,8 @@ const Test = () => {
       </Link>
       <div className="graph">
         <ComposedChart
-          width={1500}
-          height={300}
+          width={1800}
+          height={800}
           data={data}
           margin={{
             top: 5,

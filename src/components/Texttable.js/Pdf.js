@@ -4,7 +4,7 @@ import test_table from './testTable.module.css';
 const Pdf = () => {
     const location = useLocation()
     const item = location.state
-    console.log(item);
+    // console.log(item);
 
     const handeklPdf = () => {
         document.getElementById("pdfbtn").style.display = 'none'

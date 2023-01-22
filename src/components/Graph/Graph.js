@@ -195,7 +195,7 @@ const Graph = () => {
     <div className="graph">
       <ComposedChart
         width={1500}
-        height={300}
+        height={500}
         data={data}
         margin={{
           top: 5,

@@ -23,7 +23,7 @@ const AllTesttable = () => {
                         <button className={`tab ${checkActive(2, "active")}`} onClick={() => handleClick(2)} > Solve Reports</button>
                         <button className={`tab ${checkActive(3, "active")}`} onClick={() => handleClick(3)} > Processing Reports  </button>
 
-                        <p style={{marginLeft:"1020px"}}>Rakib</p>
+                        {/* <p style={{marginLeft:"1020px"}}>Rakib</p> */}
                     
                     </nev>
                     
