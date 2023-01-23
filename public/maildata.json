@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "country_name": "Austrolia",
+        "country_name": "Australia",
         "total_Mail_count": 13,
         "state": [
             {
@@ -23,15 +23,24 @@
                                         "ip": "121.123.121.453",
                                         "report_sub": "forget Password",
                                         "post_id": "345656789090",
-                                        "reportr_Issue": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
                                         "comment": "extra and bed word use",
-                                        "claimer": {
-                                            "claim_id": "abc01",
-                                            "claim_issue": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
-                                            "claim_name": "anusur"
-                                        }
+                                        "claim_id": "abc01",
+                                        "claim_name": "anusur",
+                                        "status": "panding",
+                                        "claim": [
+                                            {
+                                                "country_name": "Australia",
+                                                "State_name": "Victoria",
+                                                "city_name": "sunbury",
+                                                "user_id": "saddam01",
+                                                "user_name": "saddam Khan",
+                                                "claim_name": "anusur",
+                                                "claim_id": "abc02",
+                                                "reportr_Issue": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
+                                                "claim_issue": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+                                            }
+                                        ]
                                     },
-                                    
                                     {
                                         "id": 42343,
                                         "user_id": "saddam01",
@@ -41,14 +50,19 @@
                                         "report_sub": "forget mail",
                                         "repoter_issue": "012341587",
                                         "comment": "extra word use",
-                                        "reportr_Issue": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
-                                        "claimer": {
-                                            "claim_id": "abc02",
-                                            "claim_name": "anusur",
-                                            "claim_issue": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s "
-                                        }
+                                        "claim_id": "abc02",
+                                        "claim_name": "anusur",
+                                        "status": "panding",
+                                        "claim": [
+                                            {
+                                                "user_id": "saddam01",
+                                                "claim_name": "anusur",
+                                                "claim_id": "abc02",
+                                                "reportr_Issue": "industry's standard dummy text ever since the 1500s ",
+                                                "claim_issue": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+                                            }
+                                        ]
                                     }
-                                    
                                 ]
                             },
                             {
@@ -57,19 +71,24 @@
                                 "reports": [
                                     {
                                         "id": 23213,
-                                        "user_id": "sdf33423",
+                                        "user_id": "saddam01",
                                         "user_name": "kabir sing",
                                         "ip": "111.233.121.453",
                                         "post_id": "123456789",
                                         "report_sub": "forget mail",
                                         "repoter_issue": "012341587",
                                         "comment": "extra word use",
-                                        "reportr_Issue": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
-                                        "claimer": {
-                                            "claim_id": "abc02",
-                                            "claim_name": "anusur",
-                                            "claim_issue": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s "
-                                        }
+                                        "claim_id": "abc04",
+                                        "claim_name": "anusur haque",
+                                        "status": "panding",
+                                        "claim": [
+                                            {
+                                                "user_id": "sdf33423",
+                                                "claim_id": "abc04",
+                                                "reportr_Issue": "industry's standard dummy text ever since the 1500s ",
+                                                "claim_issue": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+                                            }
+                                        ]
                                     }
                                 ]
                             }
@@ -81,7 +100,7 @@
                         "user_report": [
                             {
                                 "id": 23,
-                                "user_id": "sasf23",
+                                "user_id": "sasf234",
                                 "reports": [
                                     {
                                         "id": 4532,
@@ -92,12 +111,17 @@
                                         "report_sub": "forget mail",
                                         "repoter_issue": "012341587",
                                         "comment": "extra word use",
-                                        "reportr_Issue": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
-                                        "claimer": {
-                                            "claim_id": "abc02",
-                                            "claim_name": "anusur",
-                                            "claim_issue": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s "
-                                        }
+                                        "claim_id": "abc04",
+                                        "claim_name": "haque",
+                                        "status": "panding",
+                                        "claim": [
+                                            {
+                                                "user_id": "sasf23",
+                                                "claim_id": "abc04",
+                                                "reportr_Issue": "industry's standard dummy text ever since the 1500s ",
+                                                "claim_issue": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+                                            }
+                                        ]
                                     }
                                 ]
                             }
@@ -115,7 +139,7 @@
                         "user_report": [
                             {
                                 "id": 23,
-                                "user_id": "sasf23",
+                                "user_id": "sasf235",
                                 "reports": [
                                     {
                                         "id": 4532,
@@ -125,6 +149,7 @@
                                         "report_sub": "forget mail",
                                         "repoter_issue": "012341587",
                                         "comment": "extra word use",
+                                        "status": "panding",
                                         "reportr_Issue": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
                                         "claimer": {
                                             "claim_id": "abc02",
@@ -132,7 +157,6 @@
                                             "claim_issue": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s "
                                         }
                                     }
-                                    
                                 ]
                             }
                         ]
@@ -143,7 +167,7 @@
                         "user_report": [
                             {
                                 "id": 23,
-                                "user_id": "sasf23",
+                                "user_id": "sasf236",
                                 "reports": [
                                     {
                                         "id": 4532,
@@ -182,7 +206,7 @@
                                         "user_name": "aslam",
                                         "user_id": "sasf23",
                                         "ip": "221.543.121.452",
-                                         "post_id": "123456789",
+                                        "post_id": "123456789",
                                         "report_sub": "forget mail",
                                         "repoter_issue": "012341587",
                                         "comment": "extra word use",

@@ -125,78 +125,17 @@ const Tasttable = () => {
 
 
     ////////////////////////// search////////////////////
-    const [data1, setdata1] = useState([]);
-    const [getsearch, setsearch] = useState('')
-    const [searchResult, setsearchResult] = useState()
 
-
-    const search = (event) => {
-        event.preventDefault()
-        const value = event.target.name.value
-        setsearch(value)
-
-    }
-
-
-    useEffect(() => {
-        fetch("maildata1.json")
-            .then((response) => response.json())
-            .then((data) => setdata1(data))
-    }, []);
-
-
-
-
-
-    {
-        data1.map(country => {
-            country.state.map(state => {
-                state.city.map(citydata => {
-                    const filtarData1 = citydata.user_report?.filter(report => report.user_id === getsearch)
-
-                    // const filtarData1 = report.reports.filter(item => item.user_id === getsearch)
-                    if (filtarData1 === true) {
-
-                        setsearchResult(filtarData1)
-                    }
-
-
-                    console.log(filtarData1);
-                    console.log(searchResult);
-                    // <Search item={filtarData1}></Search>
-                    // <SolveReport item={filtarData1}></SolveReport>
-
-
-
-
-
-                })
-
-            })
-        })
-
-    }
+   
 
     return (<>
 
         <div>
-            {/* <h1>{searchResult?.length}</h1> */}
+            {/* <h1>{searchResult.length}</h1> */}
 
             {/* /////////////////////////////search part /////////////////////////////////*/}
-            {/* <Search></Search> */}
-            <div>
-                <form onSubmit={search} className={test_table.searchInputStyle}  >
-                    <div className={test_table.inputtest_table}>
-                        <input name='name' style={{ height: "20px", width: "300px", padding: "5px", borderRadius: "5px" }} className={test_table.input}
-                            placeholder="Search here..." />
-
-                        <button className={test_table.searchField}>
-                            <BiSearch style={{ color: "gray" }} className={test_table.searchBtn} />{" "}
-                        </button>
-                    </div>
-                </form>
-
-            </div>
+            <Search></Search>
+            
 
             <br></br>
             <br></br>
