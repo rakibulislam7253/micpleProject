@@ -7,6 +7,7 @@ import test_table from './testTable.module.css';
 import { BiReset } from "react-icons/bi";
 import { MdOutlineCancel } from "react-icons/md";
 import Search from './Search';
+import SolveReport from './SolveReport';
 
 const Tasttable = () => {
     let country
@@ -19,7 +20,7 @@ const Tasttable = () => {
     const [singleuserinfoClaim, setSingleUserInfoClaim] = useState(false);
 
 
-    
+
     // spinner reset
 
     const [isLoading, setIsLoading] = useState(false);
@@ -120,383 +121,444 @@ const Tasttable = () => {
 
     }
 
-  
-
- 
 
 
 
-    return (<>
+    ////////////////////////// search////////////////////
+    const [data1, setdata1] = useState([]);
+    const [getsearch, setsearch] = useState('')
+    const [searchResult, setsearchResult] = useState([])
+
+    const search = (event) => {
+        event.preventDefault()
+        const value = event.target.name.value
+        setsearch(value)
+
+    }
+
+
+    useEffect(() => {
+        fetch("maildata1.json")
+            .then((response) => response.json())
+            .then((data) => setdata1(data))
+    }, []);
+
+
+
+
+
+    {
+        data1.map(country => {
+            country.state.map(state => {
+                state.city.map(citydata => {
+                    citydata.user_report?.map(report => {
+
+                        const filtarData1 = report.reports.filter(item => item.user_id === getsearch)
+                        
+
+                        // setsearchResult(filtarData1)
+
+
+                        console.log(filtarData1);
+
+                        // <Search item={filtarData1}></Search>
+                        // <SolveReport item={filtarData1}></SolveReport>
+                    })
+
+
+
+
+                })
+
+            })
+        })
+    
+}
+
+return (<>
+
+    <div>
+        {/* <h1>{searchResult.length}</h1> */}
+
+        {/* /////////////////////////////search part /////////////////////////////////*/}
+        {/* <Search></Search> */}
         <div>
+            <form onSubmit={search} className={test_table.searchInputStyle}  >
+                <div className={test_table.inputtest_table}>
+                    <input name='name' style={{ height: "20px", width: "300px", padding: "5px", borderRadius: "5px" }} className={test_table.input}
+                        placeholder="Search here..." />
 
+                    <button className={test_table.searchField}>
+                        <BiSearch style={{ color: "gray" }} className={test_table.searchBtn} />{" "}
+                    </button>
+                </div>
+            </form>
 
-{/* /////////////////////////////search part /////////////////////////////////*/}
-         <Search></Search>
+        </div>
 
-
-            <br></br>
-            <br></br>
-            <div className={test_table.inner}>
-                <div style={{ width: '10%' }}>
-                    <table className={test_table.table}>
-                        <tr>
-                            <th style={{ padding: '10px' }}>
-                                <div style={{ display: "flex", justifyContent: "space-between", marginTop: "-15px", marginBottom: "-22px" }}>
-                                    <p>Country</p>
-                                    {/* reset button */}
-                                    <p className={test_table.tooltip1}>
-                                        <span className={test_table.tooltiptext1}>Reset Data</span>
-                                        {isLoading ? (
-                                            <div className={test_table.loaderContainer}>
-                                                <svg viewBox="0 0 36 36">
-                                                    <path
-                                                        className={test_table.progressBg}
-                                                        d="M 18 2.0845
+        <br></br>
+        <br></br>
+        <div className={test_table.inner}>
+            <div style={{ width: '10%' }}>
+                <table className={test_table.table}>
+                    <tr>
+                        <th style={{ padding: '10px' }}>
+                            <div style={{ display: "flex", justifyContent: "space-between", marginTop: "-15px", marginBottom: "-22px" }}>
+                                <p>Country</p>
+                                {/* reset button */}
+                                <p className={test_table.tooltip1}>
+                                    <span className={test_table.tooltiptext1}>Reset Data</span>
+                                    {isLoading ? (
+                                        <div className={test_table.loaderContainer}>
+                                            <svg viewBox="0 0 36 36">
+                                                <path
+                                                    className={test_table.progressBg}
+                                                    d="M 18 2.0845
                                 a 15.9155 15.9155 0 0 1 0 31.831
                                 a 15.9155 15.9155 0 0 1 0 -31.831"
-                                                    />
-                                                    <path
-                                                        className={test_table.progressBar}
-                                                        strokeDasharray={`${progress}, 100`}
-                                                        d="M 18 2.0845
+                                                />
+                                                <path
+                                                    className={test_table.progressBar}
+                                                    strokeDasharray={`${progress}, 100`}
+                                                    d="M 18 2.0845
                                 a 15.9155 15.9155 0 0 1 0 31.831
                                 a 15.9155 15.9155 0 0 1 0 -31.831"
-                                                    />
-                                                </svg>
-
-                                                <MdOutlineCancel
-                                                    onClick={cancelLoading}
-                                                    color="#0048ba"
-                                                    className={test_table.cancelButton}
                                                 />
-                                            </div>
-                                        ) : (
-                                            <div
-                                                style={{
-                                                    display: "flex",
-                                                }}
-                                            >
-                                                <BiReset
-                                                    onClick={startLoading}
-                                                    className={test_table.restButtonStyle}
-                                                />
-                                            </div>
-                                        )}
-                                    </p>
-                                </div>
+                                            </svg>
 
-                            </th>
-                        </tr>
-                        {/* country map */}
-                        {
-                            data.map((item) => {
-                                return (
-                                    <> <tr>
+                                            <MdOutlineCancel
+                                                onClick={cancelLoading}
+                                                color="#0048ba"
+                                                className={test_table.cancelButton}
+                                            />
+                                        </div>
+                                    ) : (
+                                        <div
+                                            style={{
+                                                display: "flex",
+                                            }}
+                                        >
+                                            <BiReset
+                                                onClick={startLoading}
+                                                className={test_table.restButtonStyle}
+                                            />
+                                        </div>
+                                    )}
+                                </p>
+                            </div>
 
-                                        <td onClick={() => handleCountry(item)}>
-                                            <button className={test_table.btn} onClick={() => handleButtonClick(item.id)} style={{
-                                                backgroundColor: selectedButton === item.id ? "#0048ba" : "white",
-                                                color: selectedButton === item.id ? "white" : "black"
+                        </th>
+                    </tr>
+                    {/* country map */}
+                    {
+                        data.map((item) => {
+                            return (
+                                <> <tr>
+
+                                    <td onClick={() => handleCountry(item)}>
+                                        <button className={test_table.btn} onClick={() => handleButtonClick(item.id)} style={{
+                                            backgroundColor: selectedButton === item.id ? "#0048ba" : "white",
+                                            color: selectedButton === item.id ? "white" : "black"
+                                        }}>
+                                            {item.country_name} ({item.total_Mail_count})
+                                        </button>
+                                    </td></tr></>)
+                        })
+                    }
+                </table>
+            </div>
+
+
+
+
+            {/* division map */}
+            <div style={{ width: '10%' }}>
+                <table className={test_table.table} >
+                    <tr><th style={{ padding: '10px' }}>Division</th></tr>
+                    {
+                        getstat.map(item => {
+                            return (<>
+                                <tr>
+                                    <td onClick={() => handlestate(item)}>
+                                        <button
+                                            className={test_table.btn}
+                                            onClick={() => handleButtonClick1(item)} style={{
+                                                backgroundColor: selectedButton1 === item ? "#0048ba" : "white",
+                                                color:
+                                                    selectedButton1 === item ? "white" : "black"
                                             }}>
-                                                {item.country_name} ({item.total_Mail_count})
-                                            </button>
-                                        </td></tr></>)
-                            })
-                        }
-                    </table>
-                </div>
+                                            {item.State_name} ({item.state_user_count})
+                                        </button>
+                                    </td>
+                                </tr>
+                            </>
+                            )
+                        })
+                    }
+                </table>
+            </div>
 
 
 
+            {/* distric map */}
+            <div style={{ width: '10%' }}>
+                <table className={test_table.table}>
+                    <tr><th style={{ padding: '10px' }}>District</th></tr>
+                    {
+                        getcity.map(item => {
+                            return (
+                                <> <tr onClick={(e) => handlecity(item)}>
+                                    <td >
+                                        <button className={test_table.btn}
+                                            onClick={() => handleButtonClick2(item)} style={{
+                                                backgroundColor:
+                                                    selectedButton2 === item ? "#0048ba" : "white",
+                                                color:
+                                                    selectedButton2 === item ? "white" : "black"
+                                            }}>
+                                            {item.city_name} ({item.city_user_count})
+                                        </button>
 
-                {/* division map */}
-                <div style={{ width: '10%' }}>
-                    <table className={test_table.table} >
-                        <tr><th style={{ padding: '10px' }}>Division</th></tr>
-                        {
-                            getstat.map(item => {
-                                return (<>
-                                    <tr>
-                                        <td onClick={() => handlestate(item)}>
-                                            <button
-                                                className={test_table.btn}
-                                                onClick={() => handleButtonClick1(item)} style={{
-                                                    backgroundColor: selectedButton1 === item ? "#0048ba" : "white",
-                                                    color:
-                                                        selectedButton1 === item ? "white" : "black"
-                                                }}>
-                                                {item.State_name} ({item.state_user_count})
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    </td>
+                                </tr>
                                 </>
-                                )
-                            })
-                        }
-                    </table>
-                </div>
+                            )
+
+                        })
+
+                    }
+                </table>
+            </div>
+
+            {/* userId map */}
+            <div style={{ width: '10%' }}>
+                <table className={test_table.table} >
+                    <tr><th style={{ padding: '10px' }}>User ID</th></tr>
+                    {
+                        getuser.map((item) => {
+                            return (
+                                <><tr> <td onClick={(e) => handleUserId(item)} ><button className={test_table.btn} onClick={() => handleButtonClick3(item)} style={{ backgroundColor: selectedButton3 === item ? "#0048ba" : "white", color: selectedButton3 === item ? "white" : "black" }}>
+                                    {item.user_id}</button></td></tr>
+                                </>
+                            )
+                        })
+                    }
+                </table>
+            </div>
 
 
-
-                {/* distric map */}
-                <div style={{ width: '10%' }}>
-                    <table className={test_table.table}>
-                        <tr><th style={{ padding: '10px' }}>District</th></tr>
-                        {
-                            getcity.map(item => {
-                                return (
-                                    <> <tr onClick={(e) => handlecity(item)}>
-                                        <td >
-                                            <button className={test_table.btn}
-                                                onClick={() => handleButtonClick2(item)} style={{
-                                                    backgroundColor:
-                                                        selectedButton2 === item ? "#0048ba" : "white",
-                                                    color:
-                                                        selectedButton2 === item ? "white" : "black"
-                                                }}>
-                                                {item.city_name} ({item.city_user_count})
-                                            </button>
-
-                                        </td>
-                                    </tr>
-                                    </>
-                                )
-
-                            })
-
-                        }
-                    </table>
-                </div>
-
-                {/* userId map */}
-                <div style={{ width: '10%' }}>
-                    <table className={test_table.table} >
-                        <tr><th style={{ padding: '10px' }}>User ID</th></tr>
-                        {
-                            getuser.map((item) => {
-                                return (
-                                    <><tr> <td onClick={(e) => handleUserId(item)} ><button className={test_table.btn} onClick={() => handleButtonClick3(item)} style={{ backgroundColor: selectedButton3 === item ? "#0048ba" : "white", color: selectedButton3 === item ? "white" : "black" }}>
-                                        {item.user_id}</button></td></tr>
-                                    </>
-                                )
-                            })
-                        }
-                    </table>
-                </div>
+            {/* rest of part */}
+            <div style={{ width: '60%' }}>
+                <table className={test_table.table} >
+                    <tr>
+                        <th style={{ padding: '10px' }}>Subject</th>
+                        <th style={{ padding: '10px' }}>Repoter</th>
+                        <th style={{ padding: '10px' }}>Claimer</th>
+                        <th style={{ padding: '10px' }}>Post ID</th>
+                        <th style={{ padding: '10px' }}> Comment</th>
+                        <th style={{ padding: '5px 18px' }}> Status</th>
 
 
-                {/* rest of part */}
-                <div style={{ width: '60%' }}>
-                    <table className={test_table.table} >
-                        <tr>
-                            <th style={{ padding: '10px' }}>Subject</th>
-                            <th style={{ padding: '10px' }}>Repoter</th>
-                            <th style={{ padding: '10px' }}>Claimer</th>
-                            <th style={{ padding: '10px' }}>Post ID</th>
-                            <th style={{ padding: '10px' }}> Comment</th>
-                            <th style={{ padding: '5px 18px' }}> Status</th>
+                    </tr>
+
+                    {
+                        singleuserinfo.map((item) => {
+                            return (
+                                <><tr>
+                                    <td onClick={(e) => handleclaimId(item)} >
+                                        <button className={test_table.btn} onClick={() => handleButtonClick4(item)}
+                                            style={{
+                                                backgroundColor: selectedButton4 === item ? "#0048ba" : "white",
+                                                color: selectedButton4 === item ? "white" : "black"
+                                            }}>
+                                            {item.report_sub}  </button>
+                                    </td>
 
 
-                        </tr>
-
-                        {
-                            singleuserinfo.map((item) => {
-                                return (
-                                    <><tr>
-                                        <td onClick={(e) => handleclaimId(item)} >
-                                            <button className={test_table.btn} onClick={() => handleButtonClick4(item)}
-                                                style={{
-                                                    backgroundColor: selectedButton4 === item ? "#0048ba" : "white",
-                                                    color: selectedButton4 === item ? "white" : "black"
-                                                }}>
-                                                {item.report_sub}  </button>
-                                        </td>
+                                    <td style={{ padding: '10px' }}> {item.user_name} ({item.user_id})</td>
+                                    <td  >
 
 
-                                        <td style={{ padding: '10px' }}> {item.user_name} ({item.user_id})</td>
-                                        <td  >
+                                        {item.claim_id} ({item.claim_name})
+
+                                    </td>
+                                    <td > {item.post_id} </td>
+                                    <td > {item.comment} </td>
+                                    <td > {item.status} </td>
+                                </tr>
+                                </>
+                            )
+                        })
+                    }
+                </table>
+            </div>
 
 
-                                            {item.claim_id} ({item.claim_name})
+            <div style={{ width: '13%' }}>
 
-                                        </td>
-                                        <td > {item.post_id} </td>
-                                        <td > {item.comment} </td>
-                                        <td > {item.status} </td>
-                                    </tr>
-                                    </>
-                                )
-                            })
-                        }
-                    </table>
-                </div>
+                <table className={test_table.table} >
 
+                    <th style={{ fontSize: "16px", height: "35px", width: '98%', display: 'flex' }}><p style={{ marginLeft: "90px", marginTop: "8px" }}>Review</p>
+                        <div style={{ marginLeft: '80px', marginTop: "5px" }}>
 
-                <div style={{ width: '13%' }}>
-
-                    <table className={test_table.table} >
-
-                        <th style={{ fontSize: "16px", height: "35px", width: '98%', display: 'flex' }}><p style={{ marginLeft: "90px", marginTop: "8px" }}>Review</p>
-                            <div style={{ marginLeft: '80px', marginTop: "5px" }}>
-
-                                {/* {
+                            {/* {
                                 singleuserinfoClaim && 
                                <BiDownload style={{ width: "20px", height: "25px" }} /> 
                             } */}
 
 
 
-                            </div>
-                        </th>
+                        </div>
+                    </th>
 
 
-                        {
-                            singleuserinfoClaim && singleuserinfoClaim.map((item) => {
-                                return (
-                                    <><tr>
-                                        <td>
+                    {
+                        singleuserinfoClaim && singleuserinfoClaim.map((item) => {
+                            return (
+                                <><tr>
+                                    <td>
 
-                                            {/* repoter */}
-                                            <div className={test_table.reportpart} >
-                                                <div style={{ backgroundColor: "#e4e4e4", }}>
-                                                    <p
-                                                        style={{
-                                                            width: '100%', padding: "8px",
-                                                            marginTop: "-15PX",
-                                                            fontWeight: "bold",
-                                                            fontSize: "15px"
-                                                        }}>
-                                                        {item.user_name}<span style={{ fontSize: "11px" }}> (Repoter) </span>
-                                                    </p>
+                                        {/* repoter */}
+                                        <div className={test_table.reportpart} >
+                                            <div style={{ backgroundColor: "#e4e4e4", }}>
+                                                <p
+                                                    style={{
+                                                        width: '100%', padding: "8px",
+                                                        marginTop: "-15PX",
+                                                        fontWeight: "bold",
+                                                        fontSize: "15px"
+                                                    }}>
+                                                    {item.user_name}<span style={{ fontSize: "11px" }}> (Repoter) </span>
+                                                </p>
 
+                                            </div>
+
+                                            <div style={{ width: "320px", height: "90px" }}>
+                                                <p style={{ fontSize: "13px" }} >{item.reportr_Issue}</p>
+                                                <p style={{ fontSize: '9px', color: 'gray', marginRight: '5px', marginTop: "-7px" }}>05/01/2022, 18:11</p>
+                                            </div>
+
+                                            <div style={{ height: "300px" }} >
+                                                <div style={{ textAlign: 'start', width: '80%' }}>
+                                                    <p style={{ backgroundColor: 'lightgray', fontSize: '12px', borderRadius: '10px 10px 10px 0px', padding: '5px', margin: '5px 5px 2px 5px' }}>srgsdfctgsgsvsghcsx</p>
+                                                    <p style={{ fontSize: '9px', color: 'gray', marginLeft: '5px' }}>05/01/2022, 17:31</p>
                                                 </div>
 
-                                                <div style={{ width: "320px", height: "90px" }}>
-                                                    <p style={{ fontSize: "13px" }} >{item.reportr_Issue}</p>
-                                                    <p style={{ fontSize: '9px', color: 'gray', marginRight: '5px', marginTop: "-7px" }}>05/01/2022, 18:11</p>
-                                                </div>
-
-                                                <div style={{ height: "300px" }} >
-                                                    <div style={{ textAlign: 'start', width: '80%' }}>
-                                                        <p style={{ backgroundColor: 'lightgray', fontSize: '12px', borderRadius: '10px 10px 10px 0px', padding: '5px', margin: '5px 5px 2px 5px' }}>srgsdfctgsgsvsghcsx</p>
-                                                        <p style={{ fontSize: '9px', color: 'gray', marginLeft: '5px' }}>05/01/2022, 17:31</p>
-                                                    </div>
-
-                                                    <div style={{ width: '80%', marginLeft: 'auto', textAlign: 'end' }}>
-                                                        <p style={{ backgroundColor: 'gray', fontSize: '12px', borderRadius: '10px 10px 0px 10px', padding: '5px', margin: '5px 5px 2px 5px', color: 'white' }}>sdgfcseghsrdtgnbdbjv</p>
-                                                        <p style={{ fontSize: '9px', color: 'gray', marginRight: '5px' }}>05/01/2022, 18:11</p>
-                                                    </div>
-                                                </div>
-
-                                                <div style={{ marginLeft: "15px", display: "flex" }} >
-                                                    <div style={{ paddingTop: "8px" }}>
-                                                        <input className={test_table.inputbox} placeholder="Type messege"></input>
-                                                    </div>
-                                                    <div  >
-                                                        <BiSend className={test_table.repltbtn} style={{
-                                                            width: '25px',
-                                                            height: '25px',
-
-                                                        }} />
-                                                    </div>
+                                                <div style={{ width: '80%', marginLeft: 'auto', textAlign: 'end' }}>
+                                                    <p style={{ backgroundColor: 'gray', fontSize: '12px', borderRadius: '10px 10px 0px 10px', padding: '5px', margin: '5px 5px 2px 5px', color: 'white' }}>sdgfcseghsrdtgnbdbjv</p>
+                                                    <p style={{ fontSize: '9px', color: 'gray', marginRight: '5px' }}>05/01/2022, 18:11</p>
                                                 </div>
                                             </div>
 
-                                            {/* claimer */}
-                                            <div className={test_table.reportpart1} >
-
-                                                <div style={{ backgroundColor: "#e4e4e4" }}>
-                                                    <p
-                                                        style={{
-                                                            width: '100%', padding: "8px",
-                                                            marginTop: "15PX",
-                                                            fontWeight: "bold",
-                                                            fontSize: "15px",
-
-                                                        }}>
-
-                                                        {item.claim_name}<span style={{ fontSize: "11px" }}> (Claimer)</span>
-                                                    </p>
+                                            <div style={{ marginLeft: "15px", display: "flex" }} >
+                                                <div style={{ paddingTop: "8px" }}>
+                                                    <input className={test_table.inputbox} placeholder="Type messege"></input>
                                                 </div>
-                                                <div style={{ width: "320px", height: "90px" }}>
-                                                    <p style={{ fontSize: "13px" }} >{item.claim_issue}</p>
-                                                    <p style={{ fontSize: '9px', color: 'gray', marginRight: '5px', marginTop: "-7px" }}>05/01/2022, 18:11</p>
+                                                <div  >
+                                                    <BiSend className={test_table.repltbtn} style={{
+                                                        width: '25px',
+                                                        height: '25px',
+
+                                                    }} />
                                                 </div>
-
-                                                <div style={{ height: "300px" }}>
-                                                    <div style={{ textAlign: 'start', width: '80%' }}>
-                                                        <p style={{ backgroundColor: 'lightgray', fontSize: '12px', borderRadius: '10px 10px 10px 0px', padding: '5px', margin: '5px 5px 2px 5px' }}>srgsdfctgsgsvsghcsx</p>
-                                                        <p style={{ fontSize: '9px', color: 'gray', marginLeft: '5px' }}>05/01/2022, 17:31</p>
-                                                    </div>
-
-                                                    <div style={{ width: '80%', marginLeft: 'auto', textAlign: 'end' }}>
-                                                        <p style={{ backgroundColor: 'gray', fontSize: '12px', borderRadius: '10px 10px 0px 10px', padding: '5px', margin: '5px 5px 2px 5px', color: 'white' }}>sdgfcseghsrdtgnbdbjv</p>
-                                                        <p style={{ fontSize: '9px', color: 'gray', marginRight: '5px' }}>05/01/2022, 18:11</p>
-                                                    </div>
-                                                </div>
-
-
-
-                                                <div style={{ marginLeft: "25px", display: "flex", marginTop: "10px" }}>
-                                                    <div>
-                                                        <input className={test_table.inputbox} placeholder="Type messege"></input>
-                                                    </div>
-                                                    <div>
-                                                        <BiSend style={{
-                                                            padding: "4px 10px",
-                                                            width: '25px',
-                                                            height: '25px',
-
-                                                        }} />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                        </td>
-
-
-                                    </tr>
-
-
-                                        <div className={test_table.position}  >
-
-                                            <Link state={item} to={'/pdf'} target='_blank' className={test_table.tooltip} >
-
-                                                <AiOutlineDownload style={{ width: "22px", height: "30px", color: "gray" }}></AiOutlineDownload>
-                                                <span className={test_table.tooltiptext}>Download PDF</span>
-
-                                            </Link>
-                                        </div>
-
-                                        <div style={{ marginTop: "15px", marginBottom: "15px", display: 'flex', justifyContent: "flex-end", marginRight: "5px" }} >
-
-                                            <div  >
-
-                                                <Link state={item} to={''} className={test_table.pdfbtn}> Process </Link>
-                                            </div>
-                                            <div style={{ marginLeft: "15px" }} >
-
-                                                <Link state={item} to={''} className={test_table.pdfbtn1}> Solve  </Link>
                                             </div>
                                         </div>
-                                    </>)
-                            })
 
-                        }
+                                        {/* claimer */}
+                                        <div className={test_table.reportpart1} >
 
-                    </table>
+                                            <div style={{ backgroundColor: "#e4e4e4" }}>
+                                                <p
+                                                    style={{
+                                                        width: '100%', padding: "8px",
+                                                        marginTop: "15PX",
+                                                        fontWeight: "bold",
+                                                        fontSize: "15px",
 
-                </div>
+                                                    }}>
+
+                                                    {item.claim_name}<span style={{ fontSize: "11px" }}> (Claimer)</span>
+                                                </p>
+                                            </div>
+                                            <div style={{ width: "320px", height: "90px" }}>
+                                                <p style={{ fontSize: "13px" }} >{item.claim_issue}</p>
+                                                <p style={{ fontSize: '9px', color: 'gray', marginRight: '5px', marginTop: "-7px" }}>05/01/2022, 18:11</p>
+                                            </div>
+
+                                            <div style={{ height: "300px" }}>
+                                                <div style={{ textAlign: 'start', width: '80%' }}>
+                                                    <p style={{ backgroundColor: 'lightgray', fontSize: '12px', borderRadius: '10px 10px 10px 0px', padding: '5px', margin: '5px 5px 2px 5px' }}>srgsdfctgsgsvsghcsx</p>
+                                                    <p style={{ fontSize: '9px', color: 'gray', marginLeft: '5px' }}>05/01/2022, 17:31</p>
+                                                </div>
+
+                                                <div style={{ width: '80%', marginLeft: 'auto', textAlign: 'end' }}>
+                                                    <p style={{ backgroundColor: 'gray', fontSize: '12px', borderRadius: '10px 10px 0px 10px', padding: '5px', margin: '5px 5px 2px 5px', color: 'white' }}>sdgfcseghsrdtgnbdbjv</p>
+                                                    <p style={{ fontSize: '9px', color: 'gray', marginRight: '5px' }}>05/01/2022, 18:11</p>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div style={{ marginLeft: "25px", display: "flex", marginTop: "10px" }}>
+                                                <div>
+                                                    <input className={test_table.inputbox} placeholder="Type messege"></input>
+                                                </div>
+                                                <div>
+                                                    <BiSend style={{
+                                                        padding: "4px 10px",
+                                                        width: '25px',
+                                                        height: '25px',
+
+                                                    }} />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </td>
+
+
+                                </tr>
+
+
+                                    <div className={test_table.position}  >
+
+                                        <Link state={item} to={'/pdf'} target='_blank' className={test_table.tooltip} >
+
+                                            <AiOutlineDownload style={{ width: "22px", height: "30px", color: "gray" }}></AiOutlineDownload>
+                                            <span className={test_table.tooltiptext}>Download PDF</span>
+
+                                        </Link>
+                                    </div>
+
+                                    <div style={{ marginTop: "15px", marginBottom: "15px", display: 'flex', justifyContent: "flex-end", marginRight: "5px" }} >
+
+                                        <div  >
+
+                                            <Link state={item} to={''} className={test_table.pdfbtn}> Process </Link>
+                                        </div>
+                                        <div style={{ marginLeft: "15px" }} >
+
+                                            <Link state={item} to={''} className={test_table.pdfbtn1}> Solve  </Link>
+                                        </div>
+                                    </div>
+                                </>)
+                        })
+
+                    }
+
+                </table>
+
             </div>
         </div>
+    </div>
 
 
 
 
-    </>
+</>
 
-    );
+);
 };
 
 export default Tasttable;
