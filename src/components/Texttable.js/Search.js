@@ -16,17 +16,18 @@ const Search = () => {
 
 
     const handleSearch = (e) => {
+        e.preventDefault();
         setSearchText(e.target.value);
-        // e.preventDefault();
+        console.log(e.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         first.map((country) => {
-            country.state.map((state) => {
-                state.city.map((city) => {
-                    const filteredData = city.user_report.find((report) => report.user_id === searchText)
+            country?.state.map((state) => {
+                state?.city.map((city) => {
+                    const filteredData = city?.user_report?.find((report) => report.user_id === searchText)
                     // console.log(filteredData);
 
 
@@ -35,11 +36,7 @@ const Search = () => {
                         console.log(searchResults)
 
                     }
-                    else
-                    {
-                       
-                        console.log(searchResults)
-                    }
+
 
                 });
             });
@@ -50,9 +47,7 @@ const Search = () => {
             <div>
                 <form onSubmit={handleSubmit} className={test_table.searchInputStyle}  >
                     <div className={test_table.inputtest_table} style={{ display: "flex" }}>
-                        <input name='name' value={searchText}
-
-                            onChange={handleSearch}
+                        <input onChange={handleSearch}
 
                             style={{ height: "20px", width: "300px", padding: "5px", borderRadius: "5px" }}
                             className={test_table.input}
