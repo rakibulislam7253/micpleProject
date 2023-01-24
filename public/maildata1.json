@@ -15,16 +15,19 @@
                         "user_report": [
                             {
                                 "id": 1,
-                                "user_id": "saddam01",
+                                "user_id": "saddam_001",
                                 "reports": [
                                     {
                                         "id": 42343,
-                                        "user_id": "saddam01",
+                                        "country_name": "Australia",
+                                        "State_name": "Victoria",
+                                        "city_name": "sunbury",
+                                        "user_id": "saddam_001",
                                         "user_name": "saddam Khan",
                                         "ip": "121.123.121.453",
                                         "report_sub": "forget Password",
                                         "post_id": "345656789090",
-                                        "comment": "extra and bed word use",
+                                        "comment": "extra and bed word useextra",
                                         "claim_id": "abc01",
                                         "claim_name": "anusur",
                                         "status":"panding",
@@ -33,7 +36,7 @@
                                                 "country_name": "Australia",
                                                 "State_name": "Victoria",
                                                 "city_name": "sunbury",
-                                                "user_id": "saddam01",
+                                                "user_id": "saddam_001",
                                                 "user_name": "saddam Khan",
                                                 "claim_name": "anusur",
                                                 "claim_id": "abc02",
@@ -49,7 +52,7 @@
 
                                     {
                                         "id": 42343,
-                                        "user_id": "saddam01",
+                                        "user_id": "saddam_001",
                                         "user_name": "saddam Khan",
                                         "ip": "121.123.121.453",
                                         "post_id": "123456789",
@@ -61,7 +64,7 @@
                                         "status":"panding",
                                         "claim": [
                                             {
-                                                "user_id": "saddam01",
+                                                "user_id": "saddam_001",
                                                 "claim_name": "anusur",
                                                 "claim_id": "abc02",
                                                 "reportr_Issue":"industry's standard dummy text ever since the 1500s ",
@@ -82,7 +85,10 @@
                                 "reports": [
                                     {
                                         "id": 23213,
-                                        "user_id": "saddam01",
+                                        "country_name": "Australia",
+                                        "State_name": "Victoria",
+                                        "city_name": "sunbury",
+                                        "user_id": "sdf33423",
                                         "user_name": "kabir sing",
                                         "ip": "111.233.121.453",
                                         "post_id": "123456789",

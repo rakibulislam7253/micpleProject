@@ -126,7 +126,7 @@ const Tasttable = () => {
 
     ////////////////////////// search////////////////////
 
-   
+
 
     return (<>
 
@@ -135,7 +135,7 @@ const Tasttable = () => {
 
             {/* /////////////////////////////search part /////////////////////////////////*/}
             <Search></Search>
-            
+
 
             <br></br>
             <br></br>
@@ -324,7 +324,7 @@ const Tasttable = () => {
 
                                         </td>
                                         <td > {item.post_id} </td>
-                                        <td > {item.comment} </td>
+                                        <td style={{ maxWeight: "1000px" }} > {item.comment} </td>
                                         <td > {item.status} </td>
                                     </tr>
                                     </>
@@ -464,7 +464,7 @@ const Tasttable = () => {
 
                                         <div className={test_table.position}  >
 
-                                            <Link state={item} to={'/pdf'} target='_blank' className={test_table.tooltip} >
+                                            <Link state={item} to={'/pdf'} className={test_table.tooltip} >
 
                                                 <AiOutlineDownload style={{ width: "22px", height: "30px", color: "gray" }}></AiOutlineDownload>
                                                 <span className={test_table.tooltiptext}>Download PDF</span>

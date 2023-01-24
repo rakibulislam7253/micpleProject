@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const SearchTable = () => {
@@ -7,7 +7,8 @@ const SearchTable = () => {
     console.log(item);
     return (
         <div>
-            <h1>hi micple {item.user_id}</h1>
+        
+            
         </div>
     );
 };
