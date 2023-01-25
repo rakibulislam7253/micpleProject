@@ -50,7 +50,7 @@ const Pdf1 = () => {
                     }
 
                 </table>
-                    <div style={{ marginTop:"10px"}}>
+                    <div>
                         <button style={{ padding: "5px 15px", marginTop: "10px"}} onClick={handeklPdf} id={'pdfbtn'} >  Download PDF</button>
                     </div>
 
