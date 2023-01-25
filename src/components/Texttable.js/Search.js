@@ -18,7 +18,7 @@ const Search = () => {
     const handleSearch = (e) => {
         e.preventDefault();
         setSearchText(e.target.value);
-        console.log(searchText);
+        // console.log(searchText);
     };
 
     const handleSubmit = (e) => {
@@ -27,13 +27,13 @@ const Search = () => {
         first.map((country) => {
             country.state.map((state) => {
                 state.city.map((city) => {
-                    console.log(searchText);
+                    // console.log(searchText);
                     const filteredData = city.user_report.find((report) =>
                         report.user_id === searchText)
-                    console.log(filteredData);
+                    // console.log(filteredData);
                     if (filteredData) {
                         setSearchResults(filteredData)
-                        console.log(searchResults)
+                        // console.log(searchResults)
                     }
 
 
@@ -51,11 +51,11 @@ const Search = () => {
                             value={searchText}
                             style={{ height: "30px", width: "300px", padding: "5px", borderRadius: "5px" }}
                             className={test_table.input}
-                            placeholder="Search by User ID....." 
-                           
-                            />
-                             <BiSearch style={{ color: "gray",marginRight:"10px" }} className={test_table.searchBtn} />
-                            
+                            placeholder="Search by User ID....."
+
+                        />
+                        <BiSearch style={{ color: "gray", marginRight: "10px" }} className={test_table.searchBtn} />
+
                         {/* <div>
                             <button type='submit' className={test_table.searchField}>
                                 <BiSearch style={{ color: "gray" }} className={test_table.searchBtn} />
@@ -67,6 +67,8 @@ const Search = () => {
             </div>
 
             <div style={{ display: searchResults ? "block" : "none", marginTop: '10px' }}>
+
+
 
                 <table className={test_table.table}>
 
@@ -85,9 +87,9 @@ const Search = () => {
 
                     {
                         searchResults && searchResults.reports.map((item) => {
-                        
+
                             return <>
-                               
+
                                 <tr>
                                     <td>{item.country_name}</td>
                                     <td>{item.State_name}</td>
@@ -101,13 +103,19 @@ const Search = () => {
                                     <td> {item.status}</td>
                                 </tr>
 
-
                             </>
+
+
                         })
+
                     }
+                    <Link state={searchResults}  to={'/pdf1'} > download </Link>
+
+
+
                     <div style={{ marginTop: "70px", marginRight: "-1800px" }}>
 
-                        <h3 style={{marginBottom:"25px"}}>All User Data</h3>
+                        <h3 style={{ marginBottom: "25px" }}>All User Data</h3>
                     </div>
 
                 </table>

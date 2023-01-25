@@ -356,7 +356,8 @@ const Tasttable = () => {
                         {
                             singleuserinfoClaim && singleuserinfoClaim.map((item) => {
                                 return (
-                                    <><tr>
+                                    <>
+                                    <tr>
                                         <td>
 
                                             {/* repoter */}
