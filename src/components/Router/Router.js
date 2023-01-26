@@ -2,13 +2,11 @@ import React from "react";
 import Home from "../Home";
 import Main from "../Layout/Main";
 import Reports from "../Layout/Reports";
-
-
 import Test from "../Test";
 import AllTesttable from "../Texttable.js/AllTesttable";
 import Pdf from "../Texttable.js/Pdf";
 import Pdf1 from "../Texttable.js/Pdf1";
-import SearchTable from "../Texttable.js/SearchTable";
+
 import SolveReport from "../Texttable.js/SolveReport";
 
 
@@ -59,11 +57,8 @@ export const router = createBrowserRouter([
   {
     path: '/solve',
     element: <SolveReport></SolveReport>
-  },
-  {
-    path: '/searchtable',
-    element:<SearchTable></SearchTable>
   }
+ 
 
 
 ]);

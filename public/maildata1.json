@@ -61,7 +61,7 @@
                                         "comment": "extra word use",
                                         "claim_id": "abc02",
                                         "claim_name": "anusur",
-                                        "status":"panding",
+                                        "status":"process",
                                         "claim": [
                                             {
                                                 "user_id": "saddam_001",
@@ -97,7 +97,7 @@
                                         "comment": "extra word use",
                                         "claim_id": "abc04",
                                         "claim_name": "anusur haque",
-                                        "status":"panding",
+                                        "status":"solve",
                                         "claim": [
                                             {
                                                 "user_id": "sdf33423",
@@ -130,7 +130,7 @@
                                         "comment": "extra word use",
                                         "claim_id": "abc04",
                                         "claim_name": "haque",
-                                        "status":"panding",
+                                        "status":"solve",
                                         "claim": [
                                             {
                                                 "user_id": "sasf23",

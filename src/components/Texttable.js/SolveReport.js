@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { UnderReview } from "./StateContext";
 
 const SolveReport = () => {
-  const [searchResults, setSearchResults] = useState();
-const option1=['a','b','c','d','e']
+const solve=UnderReview();
+console.log(solve)
   return (
     <div>
-      <select>
-       {
-        option1.map(btn=>
-            {
-                <option>{btn.option1}</option>
-            })
-       }
-      </select>
+      <h1>rakib{solve.length}</h1>
     </div>
   );
 };

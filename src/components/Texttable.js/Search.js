@@ -53,6 +53,7 @@ const Search = () => {
                 width: "300px",
                 padding: "5px",
                 borderRadius: "5px",
+                backgroundColor:"white"
               }}
               className={test_table.input}
               placeholder="Search by User ID....."
