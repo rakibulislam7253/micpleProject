@@ -6,11 +6,16 @@ const Search = () => {
   const [first, setFirst] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState();
+
+
+
   useEffect(() => {
     fetch("maildata1.json")
       .then((response) => response.json())
       .then((json) => setFirst(json));
   }, []);
+
+
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -53,7 +58,7 @@ const Search = () => {
                 width: "300px",
                 padding: "5px",
                 borderRadius: "5px",
-                backgroundColor:"white"
+                backgroundColor: "white"
               }}
               className={test_table.input}
               placeholder="Search by User ID....."
@@ -65,11 +70,9 @@ const Search = () => {
           </div>
         </form>
       </div>
-
-      <div
-        style={{ display: searchResults ? "block" : "none", marginTop: "10px" }}
-      >
-        <table className={test_table.table}>
+      {/* display: searchResults ? "block" : "none" */}
+      <div style={{ marginTop: "20px", border: "1px solid Lightgray", padding: "12px" }} >
+        <table className={test_table.table}  >
           <tr>
             <th style={{ padding: "10px" }}>Country</th>
             <th style={{ padding: "10px" }}>Division</th>
@@ -115,6 +118,7 @@ const Search = () => {
                   padding: "5px 15px",
                   position: "absolute",
                   marginLeft: "830px",
+                  marginTop:"15px"
                 }}
                 id={"pdfbtn"}
               >
@@ -125,10 +129,11 @@ const Search = () => {
           </div>
 
           <div style={{ marginTop: "70px", marginRight: "-1800px" }}>
-            <h3 style={{ marginBottom: "25px" }}>All User Data</h3>
+
           </div>
         </table>
       </div>
+      <h3 style={{ marginBottom: "25px" }}>All User Data</h3>
     </div>
   );
 };
