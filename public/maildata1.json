@@ -243,40 +243,9 @@
                     }
                 ]
             }
-        ],
-
-        "statushistory": [
-            {
-                "id": 42343,
-                "country_name": "Australia",
-                "State_name": "Victoria",
-                "city_name": "sunbury",
-                "user_id": "saddam_001",
-                "user_name": "saddam Khan",
-                "report_sub": "forget Password",
-                "post_id": "345656789090",
-                "comment": "extra and bed word useextra",
-                "claim_id": "abc01",
-                "claim_name": "anusur",
-                "status": "panding"
-            },
-            {
-                "id": 42343,
-                "user_id": "saddam_001",
-                "user_name": "saddam Khan",
-                "ip": "121.123.121.453",
-                "post_id": "123456789",
-                "report_sub": "forget mail",
-                "repoter_issue": "012341587",
-                "comment": "extra word use",
-                "claim_id": "abc02",
-                "claim_name": "anusur",
-                "status": "panding"
-            },
-            {
-                
-            }
         ]
+
+       
     },
     {
         "id": 2,

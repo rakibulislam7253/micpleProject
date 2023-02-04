@@ -2,26 +2,26 @@ import React, { useEffect, useState } from "react";
 import { UnderReview } from "./StateContext";
 
 const SolveReport = () => {
-const [ShowData,setShowdata]=useState()
+  const [ShowData, setShowdata] = useState()
 
-const solve=UnderReview();
-useEffect(()=>{
+  const solve = UnderReview();
+  // useEffect(() => {
+  
+  //   setShowdata(solve)
+  // }, [solve])
 
-  setShowdata(solve)
-},[solve])
-
-// console.log(ShowData)
+  // console.log(ShowData)
   return (
     <div>
-      {
-        ShowData?.map(item=>{
-          console.log(item.country_name);
-          <h3>{item?.State_name}</h3>
-         
+      {/* {
+        ShowData?.map(name => {
 
+          <h1>name: {name}</h1>
         })
-      }
-      
+
+      } */}
+      <h1>name: {solve}</h1>
+
     </div>
   );
 };

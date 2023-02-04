@@ -25,7 +25,7 @@ const Country = () => {
   }
   return (
     <div style={{display:'flex'}} >
-      <div>
+      {/* <div>
         <button style={styles.popup} onClick={() => { setOpen(true) }}>Open!</button>
       </div>
       <div>
@@ -45,7 +45,7 @@ const Country = () => {
       </div>
       <div>
         <button style={{ border: '1px solid gray', color: open6 ? 'white' : 'black', backgroundColor: open6 ? "#0048ba" : "white", width: '100px', height: '30px' }} onClick={() => { setOpen6(true) }}>Open!</button>
-      </div>
+      </div> */}
     </div>
   );
 };

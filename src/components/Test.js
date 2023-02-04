@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
-
+import './Graph/graph.css'
 import {
   ComposedChart,
   XAxis,
@@ -20,21 +20,25 @@ const Test = () => {
       day: "1",
       uv: 4000,
       Day:198,
+      amt: 1581,
     },
     {
       day: "2",
       uv: 3000,
       Day: 198,
+      amt: 1581,
     },
     {
       day: "3",
       uv: 2000,
       Day: 460,
+      amt: 1581,
     },
     {
       day: "4",
       uv: 2780,
       Day: 308,
+      amt: 1581,
     },
     {
       day: "5",
@@ -203,8 +207,8 @@ const Test = () => {
       </Link>
       <div className="graph">
         <ComposedChart
-          width={1800}
-          height={800}
+          width={500}
+          height={300}
           data={data}
           margin={{
             top: 5,

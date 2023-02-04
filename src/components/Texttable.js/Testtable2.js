@@ -124,7 +124,7 @@ const Tasttable = () => {
 
         <br></br>
         <br></br>
-        <div className={test_table.inner}>
+        <div className={test_table.inner} style={{marginTop:"-40px"}}>
           <div style={{ width: "10%" }}>
             <table className={test_table.table}>
               <tr>

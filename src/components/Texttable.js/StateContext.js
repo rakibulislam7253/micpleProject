@@ -9,42 +9,29 @@ export const UnderReview = () => {
             .then((response) => response.json())
             .then((json) => {
 
-                json.map((status) => {
-                 const inti=   status.statushistory.filter((state) => 
-                        state.status === "panding"
-                    )
-                        // console.log(inti)
-                        if(inti)
-                        {
+                json.map((country) => {
+                    country.state.map((state) => {
 
-                            setStatus(inti);
-                        }
-                    
-                    
+                        state.city.map((city) => {
+                            // console.log(city.city_name)
+                            // setStatus(city.city_name)
 
+                            city.user_report.map(report => {
 
-                    //         state.city.map((city) => {   
-                    //             city.user_report.map(report => {    
-                    //                 const inti = report.reports.filter((reportData) =>
-                    //                     reportData.status === "solve"
-                    //                 );
-                    //                  console.log(inti)
-                    //                  if(inti)
-                    //                  {
-                    //                      setStatus(inti);
-                    //                  }
-                    //             })
-                    //         })
-                    //     });
+                                const inti = report.reports.filter((reportData) =>
+                                    reportData.status === "solve"
+                                );
+                                console.log(inti)
+
+                            });
+                        });
+                    });
                 });
+            })
 
-            });
     }, []);
 
     return status;
-};
-
-
-
+}
 
 

@@ -2,6 +2,7 @@ import React from "react";
 import Home from "../Home";
 import Main from "../Layout/Main";
 import Reports from "../Layout/Reports";
+import Post from "../Post/Post";
 import Test from "../Test";
 import AllTesttable from "../Texttable.js/AllTesttable";
 import Pdf from "../Texttable.js/Pdf";
@@ -57,7 +58,11 @@ export const router = createBrowserRouter([
   {
     path: '/solve',
     element: <SolveReport></SolveReport>
-  }
+  },
+  {
+    path: '/post',
+    element: <Post></Post>
+  },
  
 
 

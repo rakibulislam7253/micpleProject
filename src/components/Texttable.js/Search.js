@@ -61,7 +61,7 @@ const Search = () => {
                 backgroundColor: "white"
               }}
               className={test_table.input}
-              placeholder="Search by User ID....."
+              placeholder="Search by User ID...."
             />
             <BiSearch
               style={{ color: "gray", marginRight: "10px", color: "blue" }}
@@ -71,7 +71,7 @@ const Search = () => {
         </form>
       </div>
       {/* display: searchResults ? "block" : "none" */}
-      <div style={{ marginTop: "20px", border: "1px solid Lightgray", padding: "12px" }} >
+      <div style={{display: searchResults ? "block" : "none", marginTop: "-40px", border: "1px solid Lightgray", padding: "12px" }} >
         <table className={test_table.table}  >
           <tr>
             <th style={{ padding: "10px" }}>Country</th>
@@ -90,12 +90,12 @@ const Search = () => {
             searchResults.reports.map((item) => {
               return (
                 <>
-                  <tr>
-                    <td>{item.country_name}</td>
+                  <tr >
+                    <td  style={{padding:"5px"}}>{item.country_name}</td>
                     <td>{item.State_name}</td>
                     <td>{item.city_name}</td>
                     <td>{item.user_id}</td>
-                    <td>{item.report_sub}</td>
+                    <td style={{padding:"5px"}}>{item.report_sub}</td>
                     <td>
                       {item.user_name} ({item.user_id})
                     </td>
@@ -111,29 +111,21 @@ const Search = () => {
               );
             })}
 
-          <div style={{ marginTop: "10px" }}>
+          <div>
             <Link state={searchResults} to={"/pdf1"}>
               <button
-                style={{
-                  padding: "5px 15px",
-                  position: "absolute",
-                  marginLeft: "830px",
-                  marginTop:"15px"
-                }}
-                id={"pdfbtn"}
-              >
+                style={{padding: "5px 15px",position: "absolute",marginLeft: "820px",marginTop:"25px"}}
+                id={"pdfbtn"}>
                 {" "}
                 Download PDF
               </button>
             </Link>
           </div>
 
-          <div style={{ marginTop: "70px", marginRight: "-1800px" }}>
-
-          </div>
+         
         </table>
       </div>
-      <h3 style={{ marginBottom: "25px" }}>All User Data</h3>
+      <h3 style={{marginTop:"60px",display: searchResults ? "block" : "none" }}>All User Data</h3>
     </div>
   );
 };
