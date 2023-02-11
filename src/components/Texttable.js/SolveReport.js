@@ -8,9 +8,10 @@ const SolveReport = () => {
   return (
     <div>
 
-      <div style={{ width: "450px", height: "300px", backgroundColor: "green", border: "2px solid black" }}>
-        <img style={{ width: "350px", height: "auto", marginTop: "10px" }} src={demo1}></img>
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
+      <div style={{ width: "340px", height: "300px", backgroundColor: "white"}}>
+        <img style={{ width: "340px", height: "190px", marginTop: "10px" }} src={demo1}></img>
+        
+        <div style={{ display: "flex", justifyContent: "space-between" ,position:"relative",marginTop:"-190px",padding:"5px 10px"}}>
 
           <div>
             <BsCamera style={{ width: "25px", color: "white" }} />
@@ -18,7 +19,14 @@ const SolveReport = () => {
           <div>
             <FiMoreVertical style={{ width: "25px", color: "white" }} />
           </div>
+          
         </div>
+
+        <div style={{marginTop:"160px",textAlign:"left",marginLeft:"10px"}}>
+        <h4>Mobile Application Developer</h4>
+        <p style={{marginTop:"-20px"}}>0 (posts a day) 2 (Members).</p>
+        </div>
+        
       </div>
 
     </div>
