@@ -5,6 +5,7 @@ import { BiReset } from "react-icons/bi";
 import { MdOutlineCancel } from "react-icons/md";
 import { useEffect } from "react";
 import Modal from "./Modal";
+import PostFriend from "./PostFriend";
 
 const Post = () => {
   const [data, setData] = useState([]);
@@ -19,9 +20,10 @@ const Post = () => {
   const [getUserId, setUserId] = useState([]);
   const [getCategories, setCategories] = useState([]);
   const [singleData, setSingleData] = useState([]);
-  // const [chatMessage, setChatMessage] = useState([]);
-  const [details, setDetails] = useState([]);
+  // const [singleData1, setSingleData1] = useState([]);
 
+  const [details, setDetails] = useState([]);
+  console.log(singleData)
   //color select
   const [selectedButton, setSelectedButton] = useState(null);
   const [selectedButton1, setSelectedButton1] = useState(null);
@@ -119,15 +121,29 @@ const Post = () => {
 
     setCategories(posted);
   };
+
+
+
   const handleClickCategories = (e) => {
     console.log(e);
     // const item=e.post
     // setCategories()
-    const categoryee = e.post;
-    const categories = categoryee?.map((item) => item);
-    console.log(categories?.unique_audio_id);
-    setSelectedButton4(e);
-    setSingleData(categories);
+
+    if (e.name === value) {
+      console.log(value)
+      const friends = e.post;
+      setSelectedButton4(e);
+      setSingleData(friends)
+    }
+
+
+    else {
+
+      const categoryee = e.post;
+      const categories = categoryee?.map((item) => item);
+      setSelectedButton4(e);
+      setSingleData(categories);
+    }
   };
   const handleClickCategoriesDetails = (e) => {
     console.log(e.details);
@@ -198,7 +214,7 @@ const Post = () => {
                   >
                     <button
                       style={{
-                        fontSize:"15px",
+                        fontSize: "15px",
                         backgroundColor:
                           selectedButton === item.id ? "#0048ba" : "white",
                         color: selectedButton === item.id ? "white" : "black",
@@ -241,9 +257,9 @@ const Post = () => {
                   >
                     <button
                       style={{
-                        fontSize:"15px",
+                        fontSize: "15px",
                         backgroundColor:
-                          selectedButton1 === items ? "#0048ba"  : "white",
+                          selectedButton1 === items ? "#0048ba" : "white",
                         color: selectedButton1 === items ? "white" : "black",
                       }}
                       className={styles.countryBtn}
@@ -284,9 +300,9 @@ const Post = () => {
                   >
                     <button
                       style={{
-                        fontSize:"15px",
+                        fontSize: "15px",
                         backgroundColor:
-                          selectedButton2 === items ? "#0048ba"  : "white",
+                          selectedButton2 === items ? "#0048ba" : "white",
                         color: selectedButton2 === items ? "white" : "black",
                       }}
                       className={styles.countryBtn}
@@ -327,9 +343,9 @@ const Post = () => {
                   >
                     <button
                       style={{
-                        fontSize:"15px",
+                        fontSize: "15px",
                         backgroundColor:
-                          selectedButton3 === items ? "#0048ba"  : "white",
+                          selectedButton3 === items ? "#0048ba" : "white",
                         color: selectedButton3 === items ? "white" : "black",
                       }}
                       className={styles.countryBtn}
@@ -350,6 +366,13 @@ const Post = () => {
               ))}
             </tbody>
           </table>
+
+
+
+
+
+
+
           <table className={styles.tableCountry1}>
             <tbody>
               <tr>
@@ -369,10 +392,11 @@ const Post = () => {
                     className={styles.countryPointer}
                   >
                     <button
+                    value={items}
                       style={{
-                        fontSize:"15px",
+                        fontSize: "15px",
                         backgroundColor:
-                          selectedButton4 === items ? "#0048ba"  : "white",
+                          selectedButton4 === items ? "#0048ba" : "white",
                         color: selectedButton4 === items ? "white" : "black",
                       }}
                       className={styles.countryBtn}
@@ -393,56 +417,95 @@ const Post = () => {
               ))}
             </tbody>
           </table>
-          <table
-            style={{
-              height: "20px",
-            }}
-          >
-            <tbody>
-              <tr>
-                <th>PostId</th>
-                <th>Date & Time</th>
-                <th>Name</th>
-              </tr>
-              {singleData.map((items) => (
-                <tr
-                  onClick={() => handleClickCategoriesDetails(items)}
-                  style={{
-                  
-                    // fontWeight: colorSelect === items ? "normal" : "bold",
-                    // color: colorSelect === items ? "gray" : "black",
-                  }}
-                  className={styles.dataStyle}
-                >
-                  <td style={{
-                    cursor: "pointer",
-                    backgroundColor:
-                    selectedButton5 === items ? "#0048ba"  : "white",
-                  color: selectedButton5 === items ? "white" : "black",
-                  }}>{items.unique_audio_id}</td>
-                  <td>
-                    {items.date} ({items.sending_time})
-                  </td>
 
-                  <td>{items.user_name}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <table
-            style={{
-              height: "20px",
-            }}
-          >
-            <tbody>
-              <tr>
-                <th>Review</th>
-              </tr>
-              {details?.map((items) => (
-                <Modal items={items} />
-              ))}
-            </tbody>
-          </table>
+
+
+
+
+          {
+            singleData?
+
+              <>
+
+                <table
+                  style={{
+                    height: "20px",
+                  }}
+                >
+                  <tbody>
+                    <tr>
+                      <th>PostId</th>
+                      <th>Date & Time</th>
+                      <th>Name</th>
+                    </tr>
+                    {singleData.map((items) => (
+                      <tr
+                        onClick={() => handleClickCategoriesDetails(items)}
+                        style={{
+
+                          // fontWeight: colorSelect === items ? "normal" : "bold",
+                          // color: colorSelect === items ? "gray" : "black",
+                        }}
+                        className={styles.dataStyle}
+                      >
+                        <td style={{
+                          cursor: "pointer",
+                          backgroundColor:
+                            selectedButton5 === items ? "#0048ba" : "white",
+                          color: selectedButton5 === items ? "white" : "black",
+                        }}>{items.unique_audio_id}</td>
+                        <td>
+                          {items.date} ({items.sending_time})
+                        </td>
+
+                        <td>{items.user_name}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <table
+                  style={{
+                    height: "20px",
+                  }}
+                >
+                  <tbody>
+                    <tr>
+                      <th>Review</th>
+                    </tr>
+                    {details?.map((items) => (
+                      <Modal items={items} />
+                    ))}
+                  </tbody>
+                </table>
+              </> 
+              
+              :
+           <>
+
+                {
+                  singleData.map(item1 =>
+                    // console.log(item1.name)
+                    <PostFriend key={
+                      item1.id}
+                      item1={item1}
+                    ></PostFriend>
+                  )
+                }
+              </>
+
+
+
+
+
+
+
+          }
+
+
+
+
+
+
         </table>
       </div>
     </div>

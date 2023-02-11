@@ -8,26 +8,57 @@ const SolveReport = () => {
   return (
     <div>
 
-      <div style={{ width: "340px", height: "300px", backgroundColor: "white"}}>
-        <img style={{ width: "340px", height: "190px", marginTop: "10px" }} src={demo1}></img>
-        
-        <div style={{ display: "flex", justifyContent: "space-between" ,position:"relative",marginTop:"-190px",padding:"5px 10px"}}>
 
-          <div>
-            <BsCamera style={{ width: "25px", color: "white" }} />
-          </div>
-          <div>
-            <FiMoreVertical style={{ width: "25px", color: "white" }} />
-          </div>
-          
-        </div>
+{/* <table
+            style={{
+              height: "20px",
+            }}
+          >
+            <tbody>
+              <tr>
+                <th>PostId</th>
+                <th>Date & Time</th>
+                <th>Name</th>
+              </tr>
+              {singleData.map((items) => (
+                <tr
+                  onClick={() => handleClickCategoriesDetails(items)}
+                  style={{
 
-        <div style={{marginTop:"160px",textAlign:"left",marginLeft:"10px"}}>
-        <h4>Mobile Application Developer</h4>
-        <p style={{marginTop:"-20px"}}>0 (posts a day) 2 (Members).</p>
-        </div>
-        
-      </div>
+                    // fontWeight: colorSelect === items ? "normal" : "bold",
+                    // color: colorSelect === items ? "gray" : "black",
+                  }}
+                  className={styles.dataStyle}
+                >
+                  <td style={{
+                    cursor: "pointer",
+                    backgroundColor:
+                      selectedButton5 === items ? "#0048ba" : "white",
+                    color: selectedButton5 === items ? "white" : "black",
+                  }}>{items.unique_audio_id}</td>
+                  <td>
+                    {items.date} ({items.sending_time})
+                  </td>
+
+                  <td>{items.user_name}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <table
+            style={{
+              height: "20px",
+            }}
+          >
+            <tbody>
+              <tr>
+                <th>Review</th>
+              </tr>
+              {details?.map((items) => (
+                <Modal items={items} />
+              ))}
+            </tbody>
+          </table> */}
 
     </div>
   );

@@ -42,7 +42,7 @@ const handelNo=()=>{
   
 console.log(count1)
 }
-  console.log(items?.message);
+ 
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => {
     setIsOpen(!isOpen);

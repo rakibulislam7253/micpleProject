@@ -77,7 +77,6 @@
                       }
                     ]
                   },
-
                   {
                     "name": "Videos",
                     "category_post_count": 3,
@@ -86,7 +85,6 @@
                     "user_id": "Akib001",
                     "sending_time": "8:00 AM",
                     "date": "3 Jun 2023",
-
                     "post": [
                       {
                         "unique_audio_id": "3899",
@@ -173,7 +171,6 @@
                     "user_id": "Akib001",
                     "sending_time": "8:00 AM",
                     "date": "3 Jun 2023",
-
                     "post": [
                       {
                         "unique_audio_id": "38989",
@@ -235,7 +232,6 @@
                     "user_id": "Akib001",
                     "sending_time": "8:00 AM",
                     "date": "3 Jun 2023",
-
                     "post": [
                       {
                         "unique_audio_id": "989",
@@ -264,9 +260,6 @@
                       }
                     ]
                   },
-
-
-
                   {
                     "name": "Files",
                     "category_post_count": 1,
@@ -275,7 +268,6 @@
                     "user_id": "Akib001",
                     "sending_time": "8:00 AM",
                     "date": "3 Jun 2023",
-
                     "post": [
                       {
                         "unique_audio_id": "344569",
@@ -304,8 +296,6 @@
                       }
                     ]
                   },
-
-
                   {
                     "name": "Lives",
                     "category_post_count": 4,
@@ -314,7 +304,6 @@
                     "user_id": "Akib001",
                     "sending_time": "8:00 AM",
                     "date": "9 Jun 2023",
-
                     "post": [
                       {
                         "unique_audio_id": "3469",
@@ -418,8 +407,6 @@
                       }
                     ]
                   },
-
-
                   {
                     "name": "Pulls",
                     "category_post_count": 4,
@@ -428,7 +415,6 @@
                     "user_id": "Akib001",
                     "sending_time": "8:00 AM",
                     "date": "9 Jun 2023",
-
                     "post": [
                       {
                         "unique_audio_id": "3469",
@@ -440,11 +426,8 @@
                             "date": "9 JUN 2023 3:00 AM",
                             "message": "Messaging..........?",
                             "user_name": "Akib Khan",
-
-                            "pull":{
-                              "question":"afesgrsge"
-                        
-
+                            "pull": {
+                              "question": "afesgrsge"
                             },
                             "comments": 51,
                             "share": 44,
@@ -460,14 +443,9 @@
                           }
                         ]
                       }
-
-                    
-                     
                     ]
                   },
-
-
-
+                  
                   {
                     "name": "Friends",
                     "category_post_count": 4,
@@ -476,48 +454,21 @@
                     "user_id": "Akib001",
                     "sending_time": "8:00 AM",
                     "date": "9 Jun 2023",
-
                     "post": [
                       {
-                        "unique_audio_id": "3469",
-                        "user_name": "Akib Khan",
-                        "sending_time": "9 JUN 2023 3:00 AM",
-                        "details": [
-                          {
-                            "unique_audio_id": "3469",
-                            "date": "9 JUN 2023 3:00 AM",
-                            "message": "Messaging..........?",
-                            "user_name": "Akib Khan",
-
-                            "friends":{
-                             "id":"1",
-                             "name":"Rakibul islam",
-                              "work":""
-
-
-
-
-                      
-                        
-
-                            }
-                            
-                            
-                          }
-                        ]
+                        "id": 1,
+                        "name": "rakib1"
+                      },
+                      {
+                        "id": 2,
+                        "name": "rakib2"
+                      },
+                      {
+                        "id": 3,
+                        "name": "rakib3"
                       }
-
-                    
-                     
                     ]
                   }
-
-
-
-
-
-
-                  
                 ]
               },
               {
@@ -561,7 +512,6 @@
                     "user_id": "Romel001",
                     "sending_time": "2:00 AM",
                     "date": "1 Jun 2023",
-
                     "video_post": [
                       {
                         "id": 1,
@@ -645,7 +595,6 @@
                     "user_id": "Romel001",
                     "sending_time": "22:00 AM",
                     "date": "7 Jun 2023",
-
                     "photo_post": [
                       {
                         "user_name": "Romel Ahmed",
@@ -691,7 +640,6 @@
                     "user_id": "Romel001",
                     "sending_time": "7:00 AM",
                     "date": "5 Jun 2023",
-
                     "status_post": [
                       {
                         "id": 22,
@@ -757,7 +705,6 @@
                     "user_id": "Romel001",
                     "sending_time": "18:00 AM",
                     "date": "13 Jun 2023",
-
                     "file_post": [
                       {
                         "id": 2,
