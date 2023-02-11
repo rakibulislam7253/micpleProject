@@ -1,131 +1,452 @@
 import React, { useState } from "react";
-import styles from "./PostShow.module.css";
-import { FiMoreVertical } from "react-icons/fi";
-import { IoCheckmarkCircleOutline, IoMdShareAlt } from "react-icons/io5";
-import { RiShareForwardLine } from "react-icons/ri";
-import { BiWorld, BiCommentDetail, BiRocket } from "react-icons/bi";
-import {
 
-} from "react-icons/bs";
-import Post_Customs_Icons from "./Post_Customs_Icons";
-
+import styles from "./post.module.css";
+import { BiReset } from "react-icons/bi";
+import { MdOutlineCancel } from "react-icons/md";
+import { useEffect } from "react";
+import Modal from "./Modal";
 
 const Post = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const toggleDropdown = () => {
-        setIsOpen(!isOpen);
-    };
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("/post.json")
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, []);
+  //country,state,city,phone state manage
+  const [getState, setState] = useState([]);
+  const [getCities, setCities] = useState([]);
+  const [getUserId, setUserId] = useState([]);
+  const [getCategories, setCategories] = useState([]);
+  const [singleData, setSingleData] = useState([]);
+  // const [chatMessage, setChatMessage] = useState([]);
+  const [details, setDetails] = useState([]);
+
+  //color select
+  const [selectedButton, setSelectedButton] = useState(null);
+  const [selectedButton1, setSelectedButton1] = useState(null);
+  const [selectedButton2, setSelectedButton2] = useState(null);
+  const [selectedButton3, setSelectedButton3] = useState(null);
+  const [selectedButton4, setSelectedButton4] = useState(null);
+  const [selectedButton5, setSelectedButton5] = useState(null);
 
 
+  //messaging color state
+  const [colorSelect, setColorSelect] = useState(null);
+  //reset button && loading
+  const [isLoading, setIsLoading] = useState(false);
+  const [progress, setProgress] = useState(false);
 
+  //
 
+  //search input field
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
+  // const filtereData = data.filter((item) => console.log(item.country_name));
 
+  let intervalId;
 
+  const startLoading = () => {
+    setIsLoading(true);
+    setProgress(0);
+    intervalId = setInterval(() => {
+      setProgress((prevProgress) => {
+        if (prevProgress === 100) {
+          clearInterval(intervalId);
+          setIsLoading(false);
+          setState([]);
+          setCities([]);
+          setUserId([]);
+          setCategories([]);
+          setSingleData([]);
+          setDetails([]);
+          return 0;
+        }
+        return prevProgress + 10;
+      });
+    }, 1000);
+  };
 
-    return (
-        <div className={styles.pDiv}>
-            <div className={styles.pHeader}>
-                <div className={styles.pHName}>
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjNg1_sTuHQe1xYCq1HMU_tGgqJwCuIFeCiw&usqp=CAU"
-                        alt=""
-                        className={styles.pPhoto}
-                    />
-                    <div className={styles.hName}>
-                        <h4>
-                            Name <IoCheckmarkCircleOutline className={styles.pIcon} />
-                        </h4>
-                        <p style={{ marginTop: "-20px", fontSize: "12px", marginLeft: "-18px" }}>
-                            2 day<BiWorld className={styles.pIcon} />
-                        </p>
-                    </div>
-                </div>
+  const cancelLoading = () => {
+    clearInterval(intervalId);
+    setIsLoading(false);
+    setProgress(true);
+  };
 
+  const handleClickCountry = (e) => {
+    // console.log(item);
+    // console.log(item.state);
+    const countries = e.state;
+    console.log(countries);
+    const state = countries.map((item) => item);
+    setSelectedButton(e.id);
+    setSelectedButton1(!e.id);
+    setSelectedButton2(!e.id);
+    setSelectedButton3(!e.id);
+    setSelectedButton4(!e.id);
+    setSelectedButton5(!e.id);
 
-                {/* option */}
+    // console.log(state);
 
-                <div>
+    setState(state);
+  };
+  const handleClickState = (item) => {
+    console.log(item);
+    let state = item.city;
+    let city = state.map((item) => item);
+    setSelectedButton1(item);
 
-                    <FiMoreVertical style={{ marginTop: "8px", position: "sticky", marginRight: "10px", height: "22px" }} onClick={toggleDropdown} />
-                    <div style={{ position: "absolute", marginTop: "-15px" }}>
-                        {isOpen && (
+    setCities(city);
+  };
+  const handleClickCity = (item) => {
+    console.log(item);
+    let state = item.user_id;
+    let cities = state.map((item) => item);
+    console.log(cities);
+    setSelectedButton2(item);
 
+    setUserId(cities);
+  };
+  const handleClickUserId = (e) => {
+    // console.log(e.phones);
+    const posts = e.category;
+    let posted = posts.map((item) => item);
+    console.log(posted);
+    setSelectedButton3(e);
 
-                            <ul style={{ marginLeft: "-80px", backgroundColor: "white", boxShadow: "rgba(0, 0, 0, 0.18) 0px 2px 4px" }}>
+    setCategories(posted);
+  };
+  const handleClickCategories = (e) => {
+    console.log(e);
+    // const item=e.post
+    // setCategories()
+    const categoryee = e.post;
+    const categories = categoryee?.map((item) => item);
+    console.log(categories?.unique_audio_id);
+    setSelectedButton4(e);
+    setSingleData(categories);
+  };
+  const handleClickCategoriesDetails = (e) => {
+    console.log(e.details);
+    const detail = e.details;
+    const detailData = detail.map((item) => item);
+    setSelectedButton5(e);
+    setDetails(detailData);
+  };
 
-                                <Post_Customs_Icons title={'Remove '} />
-                                <Post_Customs_Icons title={'Band'} />
+  return (
+    <div>
 
+      <div className={styles.mainCountry}>
+        <table className={styles.mainTableContainer}>
+          <table className={styles.tableCountry}>
+            <tbody>
+              <tr>
+                <th>
+                  <div className={styles.countryContainer}>
+                    <p>Country</p>
+                    <p className={styles.tooltip1}>
+                      <span className={styles.tooltiptext1}>Reset Data</span>
+                      {isLoading ? (
+                        <div className={styles.loaderContainer}>
+                          <svg viewBox="0 0 36 36">
+                            <path
+                              className={styles.progressBg}
+                              d="M 18 2.0845
+                              a 15.9155 15.9155 0 0 1 0 31.831
+                              a 15.9155 15.9155 0 0 1 0 -31.831"
+                            />
+                            <path
+                              className={styles.progressBar}
+                              strokeDasharray={`${progress}, 100`}
+                              d="M 18 2.0845
+                              a 15.9155 15.9155 0 0 1 0 31.831
+                              a 15.9155 15.9155 0 0 1 0 -31.831"
+                            />
+                          </svg>
 
-                            </ul>
+                          <MdOutlineCancel
+                            onClick={cancelLoading}
+                            color="#0048ba"
+                            className={styles.cancelButton}
+                          />
+                        </div>
+                      ) : (
+                        <div
+                          style={{
+                            display: "flex",
+                          }}
+                        >
+                          <BiReset
+                            onClick={startLoading}
+                            className={styles.restButtonStyle}
+                          />
+                        </div>
+                      )}
+                    </p>
+                  </div>
+                </th>
+              </tr>
+              {data.map((item) => (
+                <tr>
+                  <td
+                    onClick={() => handleClickCountry(item)}
+                    className={[styles.countryPointer]}
+                  >
+                    <button
+                      style={{
+                        fontSize:"15px",
+                        backgroundColor:
+                          selectedButton === item.id ? "#0048ba" : "white",
+                        color: selectedButton === item.id ? "white" : "black",
+                      }}
+                      className={styles.countryBtn}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          gap: "3px",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <span> {item.country_name}</span>
+                        <span> ({item.total_user_count})</span>
+                      </div>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <table className={styles.tableCountry1}>
+            <tbody>
+              <tr>
+                <th
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  State
+                </th>
+              </tr>
+              {getState.map((items) => (
+                <tr key={items.state}>
+                  <td
+                    onClick={() => handleClickState(items)}
+                    className={styles.countryPointer}
+                  >
+                    <button
+                      style={{
+                        fontSize:"15px",
+                        backgroundColor:
+                          selectedButton1 === items ? "#0048ba"  : "white",
+                        color: selectedButton1 === items ? "white" : "black",
+                      }}
+                      className={styles.countryBtn}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          gap: "3px",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <span> {items.State_name} </span>
+                        <span> ({items.state_user_count})</span>
+                      </div>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <table className={styles.tableCountry1}>
+            <tbody>
+              <tr>
+                <th
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  City
+                </th>
+              </tr>
+              {getCities.map((items) => (
+                <tr key={items.state}>
+                  <td
+                    onClick={() => handleClickCity(items)}
+                    className={styles.countryPointer}
+                  >
+                    <button
+                      style={{
+                        fontSize:"15px",
+                        backgroundColor:
+                          selectedButton2 === items ? "#0048ba"  : "white",
+                        color: selectedButton2 === items ? "white" : "black",
+                      }}
+                      className={styles.countryBtn}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          gap: "3px",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <span> {items.city_name} </span>
+                        <span> ({items.city_user_count})</span>
+                      </div>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <table className={styles.tableCountry1}>
+            <tbody>
+              <tr>
+                <th
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  UserId
+                </th>
+              </tr>
+              {getUserId.map((items) => (
+                <tr key={items.user_id}>
+                  <td
+                    onClick={() => handleClickUserId(items)}
+                    className={styles.countryPointer}
+                  >
+                    <button
+                      style={{
+                        fontSize:"15px",
+                        backgroundColor:
+                          selectedButton3 === items ? "#0048ba"  : "white",
+                        color: selectedButton3 === items ? "white" : "black",
+                      }}
+                      className={styles.countryBtn}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          gap: "3px",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <span> {items.user_id} </span>
+                        <span> ({items.user_count})</span>
+                      </div>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <table className={styles.tableCountry1}>
+            <tbody>
+              <tr>
+                <th
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  Post
+                </th>
+              </tr>
+              {getCategories.map((items) => (
+                <tr key={items.phone}>
+                  <td
+                    onClick={() => handleClickCategories(items)}
+                    className={styles.countryPointer}
+                  >
+                    <button
+                      style={{
+                        fontSize:"15px",
+                        backgroundColor:
+                          selectedButton4 === items ? "#0048ba"  : "white",
+                        color: selectedButton4 === items ? "white" : "black",
+                      }}
+                      className={styles.countryBtn}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          gap: "3px",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <span> {items.name} </span>
+                        <span>({items.category_post_count}) </span>
+                      </div>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <table
+            style={{
+              height: "20px",
+            }}
+          >
+            <tbody>
+              <tr>
+                <th>PostId</th>
+                <th>Date & Time</th>
+                <th>Name</th>
+              </tr>
+              {singleData.map((items) => (
+                <tr
+                  onClick={() => handleClickCategoriesDetails(items)}
+                  style={{
+                  
+                    // fontWeight: colorSelect === items ? "normal" : "bold",
+                    // color: colorSelect === items ? "gray" : "black",
+                  }}
+                  className={styles.dataStyle}
+                >
+                  <td style={{
+                    cursor: "pointer",
+                    backgroundColor:
+                    selectedButton5 === items ? "#0048ba"  : "white",
+                  color: selectedButton5 === items ? "white" : "black",
+                  }}>{items.unique_audio_id}</td>
+                  <td>
+                    {items.date} ({items.sending_time})
+                  </td>
 
-                        )}
-                    </div>
-                </div>
-            </div>
-            <div className={styles.pMain}>
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjNg1_sTuHQe1xYCq1HMU_tGgqJwCuIFeCiw&usqp=CAU"
-                    alt=""
-
-                />
-            </div>
-
-
-            <div className={styles.pFooter}>
-                <div className={styles.emoji}>
-                    <img style={{ width: "33px", height: "33px" }} src="https://em-content.zobj.net/source/skype/289/thumbs-up_1f44d.png"></img>
-                    <p>Like</p>
-                    <p style={{ fontWeight: "normal" }}>50</p>
-                </div>
-                <div className={styles.emoji}>
-                    <img style={{ width: "30px", height: "30px" }} src="https://em-content.zobj.net/source/skype/289/smiling-face-with-heart-eyes_1f60d.png"></img>
-                    <p>Love</p>
-                    <p style={{ fontWeight: "normal" }}>15</p>
-                </div>
-                <div className={styles.emoji}>
-                    {/* <img src="https://em-content.zobj.net/source/skype/289/grinning-face-with-sweat_1f605.png"></img> */}
-                    <img style={{ width: "30px", height: "30px" }} src="https://em-content.zobj.net/source/skype/289/face-with-hand-over-mouth_1f92d.png"></img>
-                    <p>Haha</p>
-                    <p style={{ fontWeight: "normal" }}>6</p>
-                </div>
-                <div className={styles.emoji}>
-                    <img style={{ width: "28px", height: "28px" }} src="https://em-content.zobj.net/source/skype/289/crying-face_1f622.png"></img>
-                    <p>Sad</p>
-                    <p style={{ fontWeight: "normal" }}>1</p>
-                </div>
-                <div className={styles.emoji}>
-                    <img style={{ width: "30px", height: "30px" }} src="https://em-content.zobj.net/source/skype/289/angry-face_1f620.png"></img>
-                    <p>Angry</p>
-                    <p style={{ fontWeight: "normal" }}>0</p>
-                </div>
-
-                <div className={styles.emoji}>
-
-                    <img style={{ width: "30px", height: "30px" }} src="https://em-content.zobj.net/source/skype/289/cold-face_1f976.png"></img>
-
-                    <p>Winter</p>
-                    <p style={{ fontWeight: "normal" }}>5</p>
-                </div>
-                <div className={styles.emoji}>
-                    <BiCommentDetail style={{ width: "25px" }} />
-                    <p>Comments</p>
-                    <p style={{ fontWeight: "normal" }}>5</p>
-                </div>
-                <div className={styles.emoji}>
-                    <RiShareForwardLine style={{ width: "25px" }} />
-                    <p>Share</p>
-                    <p style={{ fontWeight: "normal" }}>5</p>
-                </div>
-                <div className={styles.emoji}>
-                    <BiRocket style={{ width: "25px" }} />
-                    <p>Promote</p>
-                    <p style={{ fontWeight: "normal" }}>5</p>
-                </div>
-            </div>
-        </div>
-    );
+                  <td>{items.user_name}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <table
+            style={{
+              height: "20px",
+            }}
+          >
+            <tbody>
+              <tr>
+                <th>Review</th>
+              </tr>
+              {details?.map((items) => (
+                <Modal items={items} />
+              ))}
+            </tbody>
+          </table>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 export default Post;
