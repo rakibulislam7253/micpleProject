@@ -1,67 +1,36 @@
-import React, { useEffect, useState } from "react";
-import demo1 from '../demo/15800017.jpg'
-import { BsCamera } from "react-icons/bs";
-import { FiMoreVertical } from "react-icons/fi";
+import React from 'react';
+import { BiBorderRadius } from 'react-icons/bi';
+import demo2 from '../demo/1580007.jpg'
 const SolveReport = () => {
-
-
   return (
-    <div>
+    <div style={{ textAlign: "left", display: "flex", alignContent: "center", justifyContent: "space-between", padding: "0px 15px", backgroundColor: "Lightgray", width: "33%", height: "100%" }}>
+      <div style={{ display: "flex" }}>
 
+        <div style={{ marginTop: "2px" }}>
+          <img style={{ width: "90px", height: "90px" }} src="https://img.icons8.com/plasticine/256/user-male-circle.png" />
+        </div>
 
-{/* <table
-            style={{
-              height: "20px",
-            }}
-          >
-            <tbody>
-              <tr>
-                <th>PostId</th>
-                <th>Date & Time</th>
-                <th>Name</th>
-              </tr>
-              {singleData.map((items) => (
-                <tr
-                  onClick={() => handleClickCategoriesDetails(items)}
-                  style={{
+        <div style={{ padding: "2px 5x", marginTop: "2px", marginLeft: "5px",width:"50%" }}>
+          <h4><b>John Doe</b></h4>
+          <p style={{ marginTop: "-20px" }}>Workes doesn't add yet.
+            Educations doesn't add yet.</p>
+        </div>
+      </div>
 
-                    // fontWeight: colorSelect === items ? "normal" : "bold",
-                    // color: colorSelect === items ? "gray" : "black",
-                  }}
-                  className={styles.dataStyle}
-                >
-                  <td style={{
-                    cursor: "pointer",
-                    backgroundColor:
-                      selectedButton5 === items ? "#0048ba" : "white",
-                    color: selectedButton5 === items ? "white" : "black",
-                  }}>{items.unique_audio_id}</td>
-                  <td>
-                    {items.date} ({items.sending_time})
-                  </td>
+      <div style={{ marginTop: "30px", marginLeft: "-10px" }}>
 
-                  <td>{items.user_name}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <table
-            style={{
-              height: "20px",
-            }}
-          >
-            <tbody>
-              <tr>
-                <th>Review</th>
-              </tr>
-              {details?.map((items) => (
-                <Modal items={items} />
-              ))}
-            </tbody>
-          </table> */}
+        <button style={{ margin: "10px", padding: "3px 10px" }}>Unfollow</button>
+        <button style={{ padding: "3px 10px" }}>Block</button>
+      </div>
+
 
     </div>
+
+
   );
 };
 
 export default SolveReport;
+
+
+

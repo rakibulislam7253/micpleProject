@@ -126,11 +126,11 @@ const Post = () => {
 
   const handleClickCategories = (e) => {
     console.log(e);
-    // const item=e.post
-    // setCategories()
+  
+    
 
-    if (e.name === value) {
-      console.log(value)
+    if (e.name==="Friends") {
+      console.log(e.name)
       const friends = e.post;
       setSelectedButton4(e);
       setSingleData(friends)
@@ -387,31 +387,17 @@ const Post = () => {
               </tr>
               {getCategories.map((items) => (
                 <tr key={items.phone}>
-                  <td
-                    onClick={() => handleClickCategories(items)}
-                    className={styles.countryPointer}
-                  >
-                    <button
-                    value={items}
-                      style={{
-                        fontSize: "15px",
-                        backgroundColor:
-                          selectedButton4 === items ? "#0048ba" : "white",
-                        color: selectedButton4 === items ? "white" : "black",
-                      }}
-                      className={styles.countryBtn}
-                    >
-                      <div
-                        style={{
-                          display: "flex",
-                          gap: "3px",
-                          justifyContent: "center",
-                        }}
-                      >
+                  <td onClick={() => handleClickCategories(items)}className={styles.countryPointer} >
+                    <button style={{ fontSize: "15px",  backgroundColor: selectedButton4 === items ? "#0048ba" : "white", color: selectedButton4 === items ? "white" : "black",
+                      }} className={styles.countryBtn}>
+
+                      <div style={{ display: "flex", gap: "3px",justifyContent: "center"}}>
                         <span> {items.name} </span>
                         <span>({items.category_post_count}) </span>
                       </div>
+
                     </button>
+
                   </td>
                 </tr>
               ))}
