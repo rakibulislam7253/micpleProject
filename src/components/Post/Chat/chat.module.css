@@ -1,0 +1,98 @@
+.fullBody {
+    /* background-color: brown; */
+    width: 320px;
+    height: 980px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    /* box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em; */
+}
+
+.part1 {
+    width: 100%;
+    height: 50%;
+
+}
+
+.part2 {
+    width: 100%;
+    height: 50%;
+
+}
+
+.part3 {
+    width: 100%;
+    height: 100%;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+
+}
+
+.online {
+    background-color: #e4e4e4;
+    margin-top: 0px;
+    height: 25px;
+
+    color: #000;
+    font-weight: 700;
+    padding: 5px 0;
+    text-align: center;
+
+}
+
+
+/* .btn:hover{
+    background-color: #0048ba;
+    color: white;
+} */
+
+.icon {
+    background-color: #f0f0f0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    padding: 2px;
+    margin-top: 2px;
+    margin-left: 5px;
+
+}
+
+.peragraph {
+    margin-left: 7px;
+    font-weight: 500;
+    font-size: 14px;
+
+}
+
+.chatlist {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    cursor: pointer;
+}
+
+.chatlist1 {
+    margin-top: -10px;
+
+    /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
+
+}
+
+.input1{
+width: 100%;
+height: 30px;
+/* background-color: #000; */
+margin-bottom: 0%;
+margin-top:250px;
+position: sticky;
+top: 0;
+}
+
+    .inputbox {
+        width: 250px;
+        height: 20px;
+        border-radius: 15px;
+        border: 0.5px solid rgb(158, 157, 157);
+        padding: 3px;
+        padding-left: 10px;
+      }

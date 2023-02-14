@@ -2,8 +2,8 @@ import React from "react";
 import Home from "../Home";
 import Main from "../Layout/Main";
 import Reports from "../Layout/Reports";
-import Post from "../Post/Post";
-import PostMain from "../Post/PostMain";
+import Chat from "../Post/Chat/Chat";
+
 import Test from "../Test";
 import AllTesttable from "../Texttable.js/AllTesttable";
 import Pdf from "../Texttable.js/Pdf";
@@ -34,14 +34,13 @@ export const router = createBrowserRouter([
     ],
   },
 
+
+
   {
     path: "/country",
     element: <Reports></Reports>,
 
   },
-
-
-
 
   {
     path: '/alltesttable',
@@ -61,16 +60,9 @@ export const router = createBrowserRouter([
     element: <SolveReport></SolveReport>
   },
   {
-    path: "/post",
-    element: <PostMain />,
-    children: [
-      {
-        path: "/post",
-        element: <Post />,
-      },
-    ],
-  },
- 
+    path:'/chat',
+    element:<Chat></Chat>
+  }
 
 
 ]);
