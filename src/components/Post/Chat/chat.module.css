@@ -1,6 +1,6 @@
 .fullBody {
     /* background-color: brown; */
-    width: 320px;
+    width: 350px;
     height: 980px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     /* box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em; */
@@ -15,6 +15,7 @@
 .part2 {
     width: 100%;
     height: 50%;
+    /* border: 1px solid rgb(9, 9, 9); */
 
 }
 
@@ -37,12 +38,6 @@
     text-align: center;
 
 }
-
-
-/* .btn:hover{
-    background-color: #0048ba;
-    color: white;
-} */
 
 .icon {
     background-color: #f0f0f0;
@@ -71,28 +66,120 @@
     cursor: pointer;
 }
 
-.chatlist1 {
+/* .chatlist1 {
     margin-top: -10px;
+} */
 
-    /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
+.input1 {
+    width: 100%;
+    height: 30px;
+    position: sticky;
+    bottom: 0%;
+}
+
+.inputbox {
+    width: 250px;
+    height: 20px;
+    border-radius: 15px;
+    border: 0.5px solid rgb(158, 157, 157);
+    padding: 3px;
+    padding-left: 10px;
+   
+  
+}
+
+.Gperagraph {
+    max-width:80% ;
+    height: auto;
+    overflow: auto;
+    text-align: left;
+    padding: 5px 10px;
+    background-color: rgb(225, 221, 221);
+    font-size: 13px;
+    border-radius: 0px 10px 10px 10px;
+    color:black;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+.Gicon {
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+    border: 1px solid rgb(135, 131, 131);
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+.Gchatlist {
+    display: flex;
+   
+}
+
+.Gbody {
+    margin-top: 18px;
+    margin-right: 15px;
+}
+.Gchatlist1{
+    height: 440px;
+    flex-direction: row-reverse;
+   
+    overflow: auto;   
+}
+
+
+
+
+
+
+
+
+
+
+.GperagraphAdmin {
+   max-width: 80%;
+    height: auto;
+    overflow: auto;
+    text-align: left;
+    padding: 5px 10px;
+    background-color:#0048ba;
+    font-size: 13px;
+    border-radius: 10px 0px 10px 10px;
+    color: white;
+    margin-left: 35px;
+    margin-top: 20px;
+   
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    
+}
+
+
+.GiconAdmin {
+
+
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+    border: 1px solid rgb(157, 146, 146);
+    border-radius: 50%;
 
 }
 
-.input1{
-width: 100%;
-height: 30px;
-/* background-color: #000; */
-margin-bottom: 0%;
-margin-top:250px;
-position: sticky;
-top: 0;
+.GchatlistAdmin {
+    display: flex;
+    margin-left: 10px;
+   
 }
 
-    .inputbox {
-        width: 250px;
-        height: 20px;
-        border-radius: 15px;
-        border: 0.5px solid rgb(158, 157, 157);
-        padding: 3px;
-        padding-left: 10px;
-      }
+.GbodyAdmin {
+    margin-top: 10px;
+    margin-right: 1px;
+}
